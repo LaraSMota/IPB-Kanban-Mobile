@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">CardBe</string>
+    <!-- Strings related to login -->
+    <string name="prompt_first_name">First Name</string>
+    <string name="prompt_last_name">Last Name</string>
+    <string name="prompt_nickname">Nickname</string>
+    <string name="prompt_email">E-mail</string>
+    <string name="prompt_confirm_email">Confirm e-mail</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_new_password">New Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_up">Sign up</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_up_short">Sign up</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+</resources>
