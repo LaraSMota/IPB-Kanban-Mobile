@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/createboardscreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/barColor"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:titleTextColor="#d7e868"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        app:title="Board" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_margin="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <EditText
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/title"
+            android:inputType="textPersonName"
+            android:selectAllOnFocus="true"
+            android:textColor="@color/white"
+            android:textColorHint="@color/black"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="@string/description"
+                android:inputType="textLongMessage"
+                android:selectAllOnFocus="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+
+            <ImageView
+                android:id="@+id/imageView18"
+                android:layout_width="31dp"
+                android:layout_height="31dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="-31dp"
+                app:layout_constraintTop_toTopOf="@+id/title"
+                app:srcCompat="@drawable/ic_filter_list_black_24dp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Background"
+            android:textColor="@color/black"
+            android:textSize="18dp"/>
+
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="280dp">
+
+            <TableRow
+                android:layout_width="36dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_height="140dp"
+                    android:layout_column="1"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/florbranca"
+                    tools:layout_editor_absoluteX="2dp"
+                    tools:layout_editor_absoluteY="155dp" />
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_height="140dp"
+                    android:layout_column="2"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/frutas"
+                    tools:layout_editor_absoluteX="2dp"
+                    tools:layout_editor_absoluteY="155dp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="365dp"
+                android:layout_height="fill_parent">
+
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_height="140dp"
+                    android:layout_column="1"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/rosas"
+                    tools:layout_editor_absoluteX="2dp"
+                    tools:layout_editor_absoluteY="155dp" />
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_height="140dp"
+                    android:layout_column="2"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/palmeira"
+                    tools:layout_editor_absoluteX="2dp"
+                    tools:layout_editor_absoluteY="155dp" />
+            </TableRow>
+        </TableLayout>
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="114dp"
+            android:layout_height="43dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@color/button"
+            android:enabled="false"
+            android:text="save"
+            android:textColor="#000000"/>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

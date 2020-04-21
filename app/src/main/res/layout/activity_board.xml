@@ -2,8 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/notificationsscreen"
+    android:id="@+id/boardscreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
@@ -21,48 +20,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:title="CardBe" />
+        app:layout_constraintVertical_bias="0"
+        app:title="Master Degree" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="685dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/quadradinhosopacos" />
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:background="@color/barColor"
-        app:tabTextColor="@color/white"
-        app:tabIndicatorColor="@color/greenB"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/projects"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Projects" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/teams"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Teams" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/notifications"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="Notifications" />
-    </com.google.android.material.tabs.TabLayout>
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/palmeira" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -70,26 +41,46 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginRight="24dp"
+        android:background="#99a7acb5"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.bottomappbar.BottomAppBar
+                android:id="@+id/bottomAppBar"
+                style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_gravity="top"
+                android:background="@color/grey"
+                app:title="To Do">
+
+            </com.google.android.material.bottomappbar.BottomAppBar>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card0"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             app:cardBackgroundColor="#99ebebeb">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:orientation="vertical">
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -146,11 +137,11 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="end"
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
+                    android:gravity="end"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tabLayout"
                     app:layout_constraintVertical_bias="0">
@@ -187,15 +178,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             app:cardBackgroundColor="#99ebebeb">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:orientation="vertical">
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -208,77 +200,69 @@
                     app:layout_constraintVertical_bias="0">
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card7"
+                        android:id="@+id/card262"
+
                         android:layout_width="0dp"
                         android:layout_height="15dp"
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
-                        app:cardBackgroundColor="#fcba03">
+                        app:cardBackgroundColor="#b8124c">
 
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card8"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="1"
-                        app:cardBackgroundColor="">
-
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/card9"
+                        android:id="@+id/card272"
                         android:layout_width="0dp"
                         android:layout_height="15dp"
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
                         app:cardBackgroundColor="">
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card282"
+                        android:layout_width="0dp"
+                        android:layout_height="15dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="#">
 
                     </androidx.cardview.widget.CardView>
 
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/textView72"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_margin="5dp"
-                    android:text="Reserve Retaurant"
+                    android:text="Write 3 pages"
                     android:textColor="@color/black"
                     android:textSize="30sp" />
-
-                <ImageView
-                    android:id="@+id/imageView10"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:scaleType="fitXY"
-                    android:layout_margin="5dp"
-                    app:srcCompat="@drawable/restaurante" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="end"
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
+                    android:gravity="end"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tabLayout"
                     app:layout_constraintVertical_bias="0">
 
-                    <TextView
-                        android:id="@+id/textView6"
+
+                    <ImageView
+                        android:id="@+id/imageView132"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="May, 31"
-                        android:textColor="@color/black"
-                        android:textSize="20sp" />
+                        app:srcCompat="@drawable/ic_person_black_24dp" />
 
                     <ImageView
-                        android:id="@+id/imageView8"
+                        android:id="@+id/imageView142"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
@@ -288,6 +272,29 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-    </LinearLayout>
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
 
+            <com.google.android.material.bottomappbar.BottomAppBar
+                android:id="@+id/bottomAppBar2"
+                style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="bottom"
+                android:background="@color/grey">
+
+            </com.google.android.material.bottomappbar.BottomAppBar>
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="10dp"
+                    android:text="Add Card"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
