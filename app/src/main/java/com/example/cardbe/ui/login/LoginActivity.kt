@@ -1,6 +1,7 @@
 package com.example.cardbe.ui.login
 
 import android.app.Activity
+import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -14,8 +15,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import com.example.cardbe.ForgotPassword
+import com.example.cardbe.Projects
 
 import com.example.cardbe.R
+import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -26,10 +30,18 @@ class LoginActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_login)
 
-        val username = findViewById<EditText>(R.id.username)
-        val password = findViewById<EditText>(R.id.password)
-        val login = findViewById<Button>(R.id.login)
-        val loading = findViewById<ProgressBar>(R.id.loading)
+        val username = findViewById<EditText>(R.id.SignInEmail)
+        val password = findViewById<EditText>(R.id.SignInPassword)
+        val login = findViewById<Button>(R.id.SignInSignInButton)
+//        val loading = findViewById<ProgressBar>(R.id.loading)
+
+        SignInClickHereLink.setOnClickListener {
+            startActivity(Intent(this, ForgotPassword::class.java))
+        }
+
+        SignInSignUpButton.setOnClickListener {
+            startActivity(Intent(this, Projects::class.java))
+        }
 
         loginViewModel = ViewModelProviders.of(this, LoginViewModelFactory())
                 .get(LoginViewModel::class.java)
@@ -51,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel.loginResult.observe(this@LoginActivity, Observer {
             val loginResult = it ?: return@Observer
 
-            loading.visibility = View.GONE
+//            loading.visibility = View.GONE
             if (loginResult.error != null) {
                 showLoginFailed(loginResult.error)
             }
@@ -91,7 +103,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             login.setOnClickListener {
-                loading.visibility = View.VISIBLE
+//                loading.visibility = View.VISIBLE
                 loginViewModel.login(username.text.toString(), password.text.toString())
             }
         }
@@ -111,6 +123,7 @@ class LoginActivity : AppCompatActivity() {
     private fun showLoginFailed(@StringRes errorString: Int) {
         Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
     }
+
 }
 
 /**

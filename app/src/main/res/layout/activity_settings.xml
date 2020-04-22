@@ -2,15 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/settingsscreen"
+    android:id="@+id/SettingsScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
 
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/SettingsToolbar"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@color/barColor"
@@ -27,70 +26,68 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_margin="24dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/SettingsToolbar">
 
         <TextView
-            android:id="@+id/general"
+            android:id="@+id/SettingsGeneral"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="General"
             android:textColor="@color/greenB"
-            android:textSize="25dp"/>
+            android:textSize="25dp" />
 
         <TextView
-            android:id="@+id/editprofile"
+            android:id="@+id/SettingsEditProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Edit Profile"
             android:textColor="@color/white"
-            android:textSize="20dp"/>
+            android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/changepassword"
+            android:id="@+id/SettingsChangePassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Change Password"
             android:textColor="@color/white"
-            android:textSize="20dp"/>
+            android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/reportaproblem"
+            android:id="@+id/SettingsReportaProblem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Report a Problem"
             android:textColor="@color/white"
-            android:textSize="20dp"/>
+            android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/deleteaccount"
+            android:id="@+id/SettingsDeleteAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Delete Account"
             android:textColor="@color/white"
-            android:textSize="20dp"/>
+            android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/aboutcardb"
+            android:id="@+id/SettingsAboutCardBe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="About CardBe"
             android:textColor="@color/white"
-            android:textSize="20dp"/>
+            android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/logout"
+            android:id="@+id/SettingsLogout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -99,16 +96,16 @@
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/notifications"
+            android:id="@+id/SettingsNotifications"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="Notifications"
             android:textColor="@color/greenB"
-            android:textSize="25dp"/>
+            android:textSize="25dp" />
 
         <Switch
-            android:id="@+id/eneblenotifications"
+            android:id="@+id/SettingsEnableNotifications"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

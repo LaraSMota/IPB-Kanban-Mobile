@@ -2,15 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/editprofilescreen"
+    android:id="@+id/EditProfileScreen"
     android:background="@color/background">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/EditProfileToolbar"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@color/barColor"
@@ -25,7 +23,7 @@
         app:title="Edit Profile" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/EditProfileImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,10 +42,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/EditProfileToolbar">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/EditProfileProfileImage"
             android:layout_width="112dp"
             android:layout_height="108dp"
             android:layout_gravity="center"
@@ -56,7 +54,7 @@
             app:srcCompat="@drawable/ic_person_white_24dp" />
 
         <EditText
-            android:id="@+id/firstname"
+            android:id="@+id/EditProfileFirstName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -68,7 +66,7 @@
             android:textColorHint="@color/white" />
 
         <EditText
-            android:id="@+id/Lastname"
+            android:id="@+id/EditProfileLastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -79,7 +77,7 @@
             android:textColorHint="@color/white" />
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/EditProfileEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -91,7 +89,7 @@
             android:textColorHint="@color/white" />
 
         <EditText
-            android:id="@+id/nickname"
+            android:id="@+id/EditProfileNickname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -102,7 +100,7 @@
             android:textColorHint="@color/white" />
 
         <Button
-            android:id="@+id/save"
+            android:id="@+id/EditProfileSaveButton"
             android:layout_width="114dp"
             android:layout_height="43dp"
             android:layout_gravity="center"

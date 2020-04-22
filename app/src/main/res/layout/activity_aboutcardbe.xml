@@ -2,15 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/aboutcardbescreen"
+    android:id="@+id/AboutCardBeScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
 
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/AboutCardBeToolbar"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@color/barColor"
@@ -25,7 +24,7 @@
         app:title="About CardBe" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/AboutCardBeImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -39,10 +38,10 @@
         android:layout_height="0dp"
         android:layout_margin="24dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="@+id/AboutCardBeImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/AboutCardBeToolbar">
 
         <TextView
             android:id="@+id/profile"

@@ -2,15 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/singinscreen"
+    android:id="@+id/SignInScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
 
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/SignInlogo"
         android:layout_width="match_parent"
         android:layout_height="320dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -31,11 +30,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/SignInlogo"
         app:layout_constraintVertical_bias="0">
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/SignInEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -46,7 +45,7 @@
             android:textColorHint="@color/white" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/SignInPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -59,7 +58,7 @@
             android:textColorHint="@color/white"/>
 
         <Button
-            android:id="@+id/signin"
+            android:id="@+id/SignInSignInButton"
             android:layout_width="114dp"
             android:layout_height="43dp"
             android:layout_gravity="center"
@@ -70,7 +69,7 @@
             android:textColor="#000000"/>
 
         <Button
-            android:id="@+id/signup"
+            android:id="@+id/SignInSignUpButton"
             android:layout_width="114dp"
             android:layout_height="43dp"
             android:layout_marginTop="10dp"
@@ -81,7 +80,7 @@
             android:textColor="#000000" />
 
         <TextView
-            android:id="@+id/forgotpassword"
+            android:id="@+id/SignInTextView0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -90,7 +89,7 @@
             android:textColor="@color/white"/>
 
         <TextView
-            android:id="@+id/clickhere"
+            android:id="@+id/SignInClickHereLink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

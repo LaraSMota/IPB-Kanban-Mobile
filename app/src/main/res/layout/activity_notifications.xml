@@ -128,7 +128,7 @@
                         android:layout_height="15dp"
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
-                        app:cardBackgroundColor="">
+                        app:cardBackgroundColor="@color/white">
 
                     </androidx.cardview.widget.CardView>
 
@@ -223,7 +223,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
-                        app:cardBackgroundColor="">
+                        app:cardBackgroundColor="@color/white">
 
                     </androidx.cardview.widget.CardView>
 
@@ -233,7 +233,7 @@
                         android:layout_height="15dp"
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
-                        app:cardBackgroundColor="">
+                        app:cardBackgroundColor="@color/white">
 
                     </androidx.cardview.widget.CardView>
 

@@ -2,14 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/createcardscreen"
+    android:id="@+id/CreateCardScreen"
     android:background="@color/white">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/CreateCardToolbar"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@color/barColor"
@@ -31,10 +30,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/CreateCardToolbar">
 
         <EditText
-            android:id="@+id/title"
+            android:id="@+id/CreateCardTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -51,7 +50,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/description"
+                android:id="@+id/CreateCardDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -63,7 +62,7 @@
                 android:textColorHint="@color/black" />
 
             <ImageView
-                android:id="@+id/imageView18"
+                android:id="@+id/CreateCardImageView1"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="10dp"
@@ -83,14 +82,14 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/imageView8"
+                    android:id="@+id/CreateCardImageView2"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginTop="10dp"
                     app:srcCompat="@drawable/ic_attachment_black_24dp" />
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/CreateCardAtachDocument"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -105,14 +104,14 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/imageView9"
+                    android:id="@+id/CreateCardImageView3"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginTop="10dp"
                     app:srcCompat="@drawable/ic_check_box_black_24dp" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/CreateCardAddChecklist"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -127,14 +126,14 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/imageView10"
+                    android:id="@+id/CreateCardimageView4"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginTop="10dp"
                     app:srcCompat="@drawable/ic_label_outline_black_24dp" />
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/CreateCardAddLabels"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -149,14 +148,14 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/imageView11"
+                    android:id="@+id/CreateCardImageView5"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginTop="10dp"
                     app:srcCompat="@drawable/ic_access_time_black_24dp" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/CreateCardAddDueDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -171,14 +170,14 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/imageView17"
+                    android:id="@+id/CreateCardImageView6"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginTop="10dp"
                     app:srcCompat="@drawable/ic_person_black_24dp" />
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/CreateCardAddMembers"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -196,11 +195,10 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/comment"
+                android:id="@+id/CreateCardComment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
                 android:ems="10"
                 android:hint="Comment"
                 android:inputType="textLongMessage"
@@ -209,7 +207,7 @@
                 android:textColorHint="@color/black"/>
 
             <ImageView
-                android:id="@+id/imageView12"
+                android:id="@+id/CreateCardImageView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -219,7 +217,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/save"
+            android:id="@+id/CreateCardSave"
             android:layout_width="114dp"
             android:layout_height="43dp"
             android:layout_marginTop="10dp"

@@ -2,15 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/homescreen"
+    android:id="@+id/ProjectsScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
 
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/ProjectsToolbar"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@color/barColor"
@@ -25,7 +24,7 @@
         app:title="CardBe" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/ProjectsFloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -39,7 +38,7 @@
         app:srcCompat="@drawable/ic_add_green_36dp" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/ProjectsImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -49,14 +48,14 @@
         app:srcCompat="@drawable/quadradinhosopacos" />
 
        <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+        android:id="@+id/ProjectsTabLayout"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:background="@color/barColor"
         app:tabTextColor="@color/white"
         app:tabIndicatorColor="@color/greenB"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/ProjectsToolbar">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
@@ -85,7 +84,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+        app:layout_constraintTop_toBottomOf="@+id/ProjectsTabLayout"
         app:layout_constraintVertical_bias="0">
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -93,12 +92,12 @@
             android:layout_height="match_parent">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/card1"
+                android:id="@+id/ProjectsCard1"
                 android:layout_width="match_parent"
                 android:layout_height="207dp">
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/ProjectsCard1Backgraund"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:scaleType="fitXY"
@@ -107,7 +106,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <com.google.android.material.bottomappbar.BottomAppBar
-                        android:id="@+id/bottomAppBar2"
+                        android:id="@+id/ProjectsCard1BottomAppBar"
                         style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
                         android:layout_width="match_parent"
                         android:layout_height="46dp"
@@ -116,7 +115,7 @@
                         app:title="Master Degree">
 
                         <ImageView
-                            android:id="@+id/imageView4"
+                            android:id="@+id/ProjectsCard1ShareImage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
@@ -139,7 +138,7 @@
                 android:layout_height="207dp">
 
                 <ImageView
-                    android:id="@+id/imageView5"
+                    android:id="@+id/ProjectsCard2Backgraund"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:scaleType="fitXY"
@@ -148,7 +147,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <com.google.android.material.bottomappbar.BottomAppBar
-                        android:id="@+id/bottomAppBar7"
+                        android:id="@+id/ProjectsCard2BottomAppBar"
                         style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
                         android:layout_width="match_parent"
                         android:layout_height="46dp"
@@ -157,7 +156,7 @@
                         app:title="Trip">
 
                         <ImageView
-                            android:id="@+id/imageView8"
+                            android:id="@+id/ProjectsCard2ShareImage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
