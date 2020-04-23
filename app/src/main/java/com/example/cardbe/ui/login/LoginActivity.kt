@@ -9,16 +9,13 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ProgressBar
 import android.widget.Toast
-import com.example.cardbe.ForgotPassword
-import com.example.cardbe.Projects
+import com.example.cardbe.*
+import com.example.cardbe.ui.home.Home
 
-import com.example.cardbe.R
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -35,12 +32,16 @@ class LoginActivity : AppCompatActivity() {
         val login = findViewById<Button>(R.id.SignInSignInButton)
 //        val loading = findViewById<ProgressBar>(R.id.loading)
 
-        SignInClickHereLink.setOnClickListener {
-            startActivity(Intent(this, ForgotPassword::class.java))
+        SignInSignInButton.setOnClickListener {
+            startActivity(Intent(this, Home::class.java))
         }
 
         SignInSignUpButton.setOnClickListener {
-            startActivity(Intent(this, Projects::class.java))
+            startActivity(Intent(this, SignUp::class.java))
+        }
+
+        SignInClickHereLink.setOnClickListener {
+            startActivity(Intent(this, ForgotPassword::class.java))
         }
 
         loginViewModel = ViewModelProviders.of(this, LoginViewModelFactory())
@@ -102,10 +103,10 @@ class LoginActivity : AppCompatActivity() {
                 false
             }
 
-            login.setOnClickListener {
+//            login.setOnClickListener {
 //                loading.visibility = View.VISIBLE
-                loginViewModel.login(username.text.toString(), password.text.toString())
-            }
+//                loginViewModel.login(username.text.toString(), password.text.toString())
+//            }
         }
     }
 

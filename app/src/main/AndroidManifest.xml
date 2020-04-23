@@ -2,19 +2,70 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cardbe">
 
-    <application
-        android:theme="@style/cardBeTheme">
+    <application android:theme="@style/cardBeTheme">
+        <activity
+            android:name=".CreateTeam"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_create_team"
+            android:theme="@style/FullscreenTheme"></activity>
+        <activity
+            android:name=".ui.home.Home"
+            android:label="@string/app_name"
+            android:theme="@style/cardBeTheme.NoActionBar" />
         <activity
             android:name=".ui.login.LoginActivity"
-            android:label="Master Degree">
+            android:label="Master Degree"
+            android:theme="@style/cardBeTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ForgotPassword"></activity>
-        <activity android:name=".Projects"></activity>
+        <activity
+            android:name=".AboutCardBe"
+            android:label="About Card Be"
+            android:theme="@style/cardBeTheme.NoActionBar" />
+        <activity
+            android:name=".Board"
+            android:label="Board"
+            android:theme="@style/cardBeTheme.NoActionBar" />
+        <activity
+            android:name=".ChangePassword"
+            android:label="Change Password"
+            android:theme="@style/cardBeTheme.NoActionBar" />
+        <activity
+            android:name=".CreateBoard"
+            android:label="Create Board"
+            android:theme="@style/cardBeTheme.NoActionBar" />
+        <activity
+            android:name=".CreateCard"
+            android:label="Create Card"
+            android:theme="@style/cardBeTheme.NoActionBar" />
+        <activity
+            android:name=".ForgotPassword"
+            android:label="Forgot Password"
+            android:theme="@style/cardBeTheme.NoActionBar" />
+        <activity
+            android:name=".Profile"
+            android:label="Profile"
+            android:theme="@style/cardBeTheme.NoActionBar" />
+        <activity
+            android:name=".ReportProblem"
+            android:label="Report a Problem"
+            android:theme="@style/cardBeTheme.NoActionBar" />
+        <activity
+            android:name=".Settings"
+            android:label="Settings"
+            android:theme="@style/cardBeTheme.NoActionBar" />
+        <activity
+            android:name=".SignUp"
+            android:label="Sign Up"
+            android:theme="@style/cardBeTheme.NoActionBar" />
+        <activity
+            android:name=".Terms"
+            android:label="Terms Of Service"
+            android:theme="@style/cardBeTheme.NoActionBar" />
     </application>
 
 </manifest>

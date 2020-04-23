@@ -10,4 +10,6 @@
     <color name="greenB">#61b8a2</color>
     <color name="barColor">#232323</color>
     <color name="grey">#ebebeb</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>
