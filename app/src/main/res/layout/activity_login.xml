@@ -7,95 +7,117 @@
     android:layout_height="match_parent"
     android:background="@color/background">
 
-
-    <ImageView
-        android:id="@+id/SignInlogo"
-        android:layout_width="match_parent"
-        android:layout_height="320dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/quadradinhos" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SignInlogo"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0">
 
-        <EditText
-            android:id="@+id/SignInEmail"
+        <ImageView
+            android:id="@+id/SignInlogo"
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/quadradinhos" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="@string/prompt_email"
-            android:inputType="textEmailAddress"
-            android:selectAllOnFocus="true"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
+            android:layout_margin="24dp"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/SignInPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="@string/prompt_password"
-            android:imeActionLabel="@string/action_sign_in_short"
-            android:imeOptions="actionDone"
-            android:inputType="textPassword"
-            android:selectAllOnFocus="true"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"/>
+            <TextView
+                android:id="@+id/SignInTextView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:text="@string/prompt_email" />
 
-        <Button
-            android:id="@+id/SignInSignInButton"
-            android:layout_width="114dp"
-            android:layout_height="43dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="@color/button"
-            android:enabled="true"
-            android:text="@string/action_sign_in"
-            android:textColor="#000000"/>
+            <EditText
+                android:id="@+id/SignInEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="user@mail.com"
+                android:inputType="textEmailAddress"
+                android:selectAllOnFocus="true"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"/>
 
-        <Button
-            android:id="@+id/SignInSignUpButton"
-            android:layout_width="114dp"
-            android:layout_height="43dp"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:background="@color/button"
-            android:enabled="true"
-            android:text="@string/action_sign_up"
-            android:textColor="#000000" />
+            <TextView
+                android:id="@+id/SignInTextView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:text="@string/prompt_password" />
 
-        <TextView
-            android:id="@+id/SignInTextView0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Forgot your password?"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/white"/>
+            <EditText
+                android:id="@+id/SignInPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="**********"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:selectAllOnFocus="true"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"/>
 
-        <TextView
-            android:id="@+id/SignInClickHereLink"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="6dp"
-            android:text="Click here"
-            android:textColor="#e8efc3" />
+            <Button
+                android:id="@+id/SignInSignInButton"
+                android:layout_width="114dp"
+                android:layout_height="43dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@color/button"
+                android:enabled="true"
+                android:text="@string/action_sign_in"
+                android:textColor="#000000"/>
+
+            <Button
+                android:id="@+id/SignInSignUpButton"
+                android:layout_width="114dp"
+                android:layout_height="43dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:background="@color/button"
+                android:enabled="true"
+                android:text="@string/action_sign_up"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/SignInTextView0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Forgot your password?"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/SignInClickHereLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="6dp"
+                android:text="Click here"
+                android:textColor="#e8efc3" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

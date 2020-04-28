@@ -7,15 +7,30 @@
     android:layout_height="match_parent"
     android:background="@color/background">
 
-    <ImageView
-        android:id="@+id/BoardScreenBackground"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/CreateBoardToolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitXY"
+        android:layout_height="48dp"
+        android:background="@color/barColor"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        app:title="Board"
+        app:titleTextColor="#d7e868" />
+
+    <ImageView
+        android:id="@+id/BoardScreenBackground"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CreateBoardToolbar"
         app:layout_constraintVertical_bias="0"
         app:srcCompat="@drawable/palmeira" />
 
@@ -27,7 +42,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CreateBoardToolbar"
         app:layout_constraintVertical_bias="0">
 
         <LinearLayout
@@ -56,8 +71,9 @@
 
                         <TextView
                             android:id="@+id/BoardScreenCollumn1Title"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
                             android:layout_marginHorizontal="10dp"
                             android:text="To Do"
                             android:textColor="@color/black"
@@ -135,7 +151,7 @@
                                         android:layout_margin="5dp"
                                         android:text="Read 10 articles"
                                         android:textColor="@color/black"
-                                        android:textSize="30sp" />
+                                        android:textSize="20sp" />
 
                                     <LinearLayout
                                         android:layout_width="match_parent"
@@ -156,7 +172,7 @@
                                             android:layout_margin="5dp"
                                             android:text="April, 18"
                                             android:textColor="@color/black"
-                                            android:textSize="20sp" />
+                                            android:textSize="15sp" />
 
                                         <ImageView
                                             android:id="@+id/BoardScreenCollumn1Card1ChecklistIcon"
@@ -222,7 +238,7 @@
                                         android:layout_margin="5dp"
                                         android:text="Write 3 pages"
                                         android:textColor="@color/black"
-                                        android:textSize="30sp" />
+                                        android:textSize="20sp" />
 
                                     <LinearLayout
                                         android:layout_width="match_parent"
@@ -254,6 +270,275 @@
                                 </LinearLayout>
                             </androidx.cardview.widget.CardView>
 
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/BoardScreenCollumn1Card3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="16dp"
+                                app:cardBackgroundColor="#99ebebeb">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintHorizontal_bias="0"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+                                        app:layout_constraintVertical_bias="0">
+
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/BoardScreenCollumn1Card3Title"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:text="Share work done"
+                                        android:textColor="@color/black"
+                                        android:textSize="20sp" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="end"
+                                        android:orientation="horizontal"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintHorizontal_bias="0"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+                                        app:layout_constraintVertical_bias="0">
+
+                                        <ImageView
+                                            android:id="@+id/BoardScreenCollumn1Card3DescriptionIcon"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="5dp"
+                                            app:srcCompat="@drawable/ic_filter_list_black_24dp" />
+
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/BoardScreenCollumn1Card4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="16dp"
+                                app:cardBackgroundColor="#99ebebeb">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintHorizontal_bias="0"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+                                        app:layout_constraintVertical_bias="0">
+
+                                        <androidx.cardview.widget.CardView
+                                            android:id="@+id/BoardScreenCollumn1Card4Label1"
+                                            android:layout_width="90dp"
+                                            android:layout_height="15dp"
+                                            android:layout_marginRight="10dp"
+                                            app:cardBackgroundColor="#b8124c">
+
+                                        </androidx.cardview.widget.CardView>
+
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/BoardScreenCollumn1Card4Title"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:text="Buy blockchain book"
+                                        android:textColor="@color/black"
+                                        android:textSize="20sp" />
+
+                                    <ImageView
+                                        android:id="@+id/Notification2Picture"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="200dp"
+                                        android:layout_margin="5dp"
+                                        android:scaleType="fitXY"
+                                        app:srcCompat="@drawable/blockchainbook" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="end"
+                                        android:orientation="horizontal"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintHorizontal_bias="0"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+                                        app:layout_constraintVertical_bias="0">
+
+
+                                        <ImageView
+                                            android:id="@+id/BoardScreenCollumn1Card4MemberIcon"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="5dp"
+                                            app:srcCompat="@drawable/ic_person_black_24dp" />
+
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/BoardScreenCollumn1Card5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="16dp"
+                                app:cardBackgroundColor="#99ebebeb">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintHorizontal_bias="0"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+                                        app:layout_constraintVertical_bias="0">
+
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/BoardScreenCollumn1Card5Title"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:text="E-mail teacher"
+                                        android:textColor="@color/black"
+                                        android:textSize="20sp" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="end"
+                                        android:orientation="horizontal"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintHorizontal_bias="0"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+                                        app:layout_constraintVertical_bias="0">
+
+                                        <ImageView
+                                            android:id="@+id/BoardScreenCollumn1Card5DescriptionIcon"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="5dp"
+                                            app:srcCompat="@drawable/ic_filter_list_black_24dp" />
+
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/BoardScreenCollumn1Card6"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="16dp"
+                                app:cardBackgroundColor="#99ebebeb">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintHorizontal_bias="0"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+                                        app:layout_constraintVertical_bias="0">
+
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/BoardScreenCollumn1Card6Title"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:text="Download Simulator"
+                                        android:textColor="@color/black"
+                                        android:textSize="20sp" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="end"
+                                        android:orientation="horizontal"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintHorizontal_bias="0"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+                                        app:layout_constraintVertical_bias="0">
+
+
+                                        <ImageView
+                                            android:id="@+id/BoardScreenCollumn1Card6MemberIcon"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="5dp"
+                                            app:srcCompat="@drawable/ic_person_black_24dp" />
+
+                                        <ImageView
+                                            android:id="@+id/BoardScreenCollumn1Card6DescriptionIcon"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="5dp"
+                                            app:srcCompat="@drawable/ic_filter_list_black_24dp" />
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
                         </LinearLayout>
                     </ScrollView>
 
@@ -268,11 +553,217 @@
                             android:id="@+id/BoardScreenCollumn1AddCardTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="right"
+                            android:layout_gravity="center_vertical|right"
                             android:layout_marginRight="10dp"
                             android:text="Add Card"
                             android:textColor="@color/black"
-                            android:textSize="20sp" />
+                            android:textSize="15sp" />
+                    </androidx.cardview.widget.CardView>
+                </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#99a7acb5"
+                android:orientation="vertical">
+
+                <androidx.coordinatorlayout.widget.CoordinatorLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/BoardScreenCollumn2BottomAppBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="46dp"
+                        android:layout_gravity="top"
+                        app:cardBackgroundColor="@color/grey">
+
+                        <TextView
+                            android:id="@+id/BoardScreenCollumn2Title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginHorizontal="10dp"
+                            android:text="Doing"
+                            android:textColor="@color/black"
+                            android:textSize="25sp" />
+                    </androidx.cardview.widget.CardView>
+                </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+                <androidx.coordinatorlayout.widget.CoordinatorLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="40dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/BoardScreenCollumn2Card1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="16dp"
+                                app:cardBackgroundColor="#99ebebeb">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintHorizontal_bias="0"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+                                        app:layout_constraintVertical_bias="0">
+
+
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/BoardScreenCollumn2Card1Title"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:text="Basic Research"
+                                        android:textColor="@color/black"
+                                        android:textSize="20sp" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="end"
+                                        android:orientation="horizontal"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintHorizontal_bias="0"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+                                        app:layout_constraintVertical_bias="0">
+
+                                        <ImageView
+                                            android:id="@+id/BoardScreenCollumn2Card1ChecklistIcon"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="5dp"
+                                            app:srcCompat="@drawable/ic_check_box_black_24dp" />
+
+                                        <ImageView
+                                            android:id="@+id/BoardScreenCollumn2Card1DescriptionIcon"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="5dp"
+                                            app:srcCompat="@drawable/ic_filter_list_black_24dp" />
+
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+                    </ScrollView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/BoardScreenCollumn2AddCardBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_gravity="bottom"
+                        app:cardBackgroundColor="@color/grey">
+
+                        <TextView
+                            android:id="@+id/BoardScreenCollumn2AddCardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|right"
+                            android:layout_marginRight="10dp"
+                            android:text="Add Card"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+                    </androidx.cardview.widget.CardView>
+                </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#99a7acb5"
+                android:orientation="vertical">
+
+                <androidx.coordinatorlayout.widget.CoordinatorLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/BoardScreenCollumn3BottomAppBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="46dp"
+                        android:layout_gravity="top"
+                        app:cardBackgroundColor="@color/grey">
+
+                        <TextView
+                            android:id="@+id/BoardScreenCollumn3Title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginHorizontal="10dp"
+                            android:text="Done"
+                            android:textColor="@color/black"
+                            android:textSize="25sp" />
+                    </androidx.cardview.widget.CardView>
+                </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+                <androidx.coordinatorlayout.widget.CoordinatorLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="40dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                        </LinearLayout>
+                    </ScrollView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/BoardScreenCollumn3AddCardBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_gravity="bottom"
+                        app:cardBackgroundColor="@color/grey">
+
+                        <TextView
+                            android:id="@+id/BoardScreenCollumn3AddCardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|right"
+                            android:layout_marginRight="10dp"
+                            android:text="Add Card"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
                     </androidx.cardview.widget.CardView>
                 </androidx.coordinatorlayout.widget.CoordinatorLayout>
             </LinearLayout>

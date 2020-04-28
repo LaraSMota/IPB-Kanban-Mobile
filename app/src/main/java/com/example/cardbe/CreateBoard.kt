@@ -18,15 +18,16 @@ class CreateBoard : AppCompatActivity() {
         val backgroundOptions = findViewById<TableLayout>(R.id.CreateBoardTableLayout)
         val saveButton = findViewById<Button>(R.id.CreateBoardSaveButton)
         var background = findViewById<ImageView>(R.id.CreateBoardBackground1)
-        background.setAlpha(0.7)
+        background.setAlpha(1.0f)
 
         backgroundOptions.children.forEach {
             val tableRow = it as TableRow
             tableRow.children.forEach {
+
                 it.setOnClickListener{
-                background.setAlpha(1.0)
+                background.setAlpha(0.5f)
                 background = it as ImageView
-                background.setAlpha(0.1)
+                background.setAlpha(1.0f)
                 }
             }
         }
@@ -43,8 +44,4 @@ class CreateBoard : AppCompatActivity() {
             }
         }
     }
-}
-
-private fun ImageView.setAlpha(d: Double) {
-
 }

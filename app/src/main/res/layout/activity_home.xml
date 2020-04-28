@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.Home">
+    tools:context=".ui.home.Home"
+    android:background="@color/background">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -29,6 +30,14 @@
             app:tabTextColor="@color/button"
             android:background="?attr/colorPrimary" />
     </com.google.android.material.appbar.AppBarLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:layout_gravity="bottom|end"
+        app:srcCompat="@drawable/quadradinhosopacos" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"

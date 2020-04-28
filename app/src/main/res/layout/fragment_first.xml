@@ -6,17 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.FirstFragment"
-    android:background="@color/background">
-
-    <ImageView
-        android:id="@+id/ProjectsImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/quadradinhosopacos" />
+    android:background="@android:color/transparent">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -65,16 +55,17 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="15dp"
                                 android:layout_marginLeft="15dp"
+                                android:layout_gravity="center_vertical"
                                 android:layout_marginVertical="5dp"
-                                android:text="Master Degree"
                                 android:textColor="@color/black"
-                                android:textSize="25sp"/>
+                                android:textSize="20sp"
+                                android:text="Master Degree"/>
 
                             <ImageView
                                 android:id="@+id/ProjectsCard1ShareImage"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="right"
+                                android:layout_gravity="right|center_vertical"
                                 android:layout_margin="10dp"
                                 app:srcCompat="@drawable/ic_share_black_24dp" />
                         </androidx.cardview.widget.CardView>
@@ -113,16 +104,17 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="15dp"
                                 android:layout_marginLeft="15dp"
+                                android:layout_gravity="center_vertical"
                                 android:layout_marginVertical="5dp"
-                                android:text="Trip"
                                 android:textColor="@color/black"
-                                android:textSize="25sp"/>
+                                android:textSize="20sp"
+                                android:text="Trip"/>
 
                             <ImageView
                                 android:id="@+id/ProjectsCard2ShareImage"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="right"
+                                android:layout_gravity="right|center_vertical"
                                 android:layout_margin="10dp"
                                 app:srcCompat="@drawable/ic_share_black_24dp" />
                         </androidx.cardview.widget.CardView>

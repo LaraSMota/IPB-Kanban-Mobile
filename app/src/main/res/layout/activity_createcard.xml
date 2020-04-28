@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/CreateCardScreen"
@@ -22,212 +23,246 @@
         app:layout_constraintVertical_bias="0.0"
         app:title="Card" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
         android:layout_margin="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CreateCardToolbar">
-
-        <EditText
-            android:id="@+id/CreateCardTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:ems="10"
-            android:hint="@string/title"
-            android:inputType="textPersonName"
-            android:selectAllOnFocus="true"
-            android:textColor="@color/white"
-            android:textColorHint="@color/black" />
+        app:layout_constraintTop_toBottomOf="@+id/CreateCardToolbar"
+        app:layout_constraintVertical_bias="0.448">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CreateCardToolbar">
 
-            <EditText
-                android:id="@+id/CreateCardDescription"
+            <TextView
+                android:id="@+id/CreateCardTextView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:text="@string/title" />
+
+            <EditText
+                android:id="@+id/CreateCardTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/description"
-                android:inputType="textLongMessage"
+                android:hint="My Card Title"
+                android:inputType="textPersonName"
                 android:selectAllOnFocus="true"
                 android:textColor="@color/white"
                 android:textColorHint="@color/black" />
 
-            <ImageView
-                android:id="@+id/CreateCardImageView1"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="-24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/description"
-                app:srcCompat="@drawable/ic_filter_list_black_24dp" />
-
-        </LinearLayout>
-
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/CreateCardImageView2"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="10dp"
-                    app:srcCompat="@drawable/ic_attachment_black_24dp" />
-
-                <TextView
-                    android:id="@+id/CreateCardAtachDocument"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:text="Attach documents"
-                    android:textColor="@color/black"/>
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/CreateCardImageView3"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="10dp"
-                    app:srcCompat="@drawable/ic_check_box_black_24dp" />
-
-                <TextView
-                    android:id="@+id/CreateCardAddChecklist"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:text="Add checklist"
-                    android:textColor="@color/black" />
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/CreateCardimageView4"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="10dp"
-                    app:srcCompat="@drawable/ic_label_outline_black_24dp" />
-
-                <TextView
-                    android:id="@+id/CreateCardAddLabels"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:text="Add labels"
-                    android:textColor="@color/black"/>
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/CreateCardImageView5"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="10dp"
-                    app:srcCompat="@drawable/ic_access_time_black_24dp" />
-
-                <TextView
-                    android:id="@+id/CreateCardAddDueDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:text="Add due date"
-                    android:textColor="@color/black"/>
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/CreateCardImageView6"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="10dp"
-                    app:srcCompat="@drawable/ic_person_black_24dp" />
-
-                <TextView
-                    android:id="@+id/CreateCardAddMembers"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:text="Add members"
-                    android:textColor="@color/black" />
-
-            </TableRow>
-
-        </TableLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/CreateCardComment"
+            <TextView
+                android:id="@+id/CreateCardTextView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:layout_marginTop="10dp"
-                android:ems="10"
-                android:hint="Comment"
-                android:inputType="textLongMessage"
-                android:selectAllOnFocus="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/black"/>
+                android:textSize="15sp"
+                android:text="@string/description" />
 
-            <ImageView
-                android:id="@+id/CreateCardImageView7"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/CreateCardDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="It should be done like this..."
+                    android:inputType="textMultiLine"
+                    android:selectAllOnFocus="true"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/black" />
+
+                <ImageView
+                    android:id="@+id/CreateCardImageView1"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="-24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/description"
+                    app:srcCompat="@drawable/ic_filter_list_black_24dp" />
+
+            </LinearLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/CreateCardImageView2"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginTop="10dp"
+                        app:srcCompat="@drawable/ic_attachment_black_24dp" />
+
+                    <TextView
+                        android:id="@+id/CreateCardAtachDocument"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="Attach documents"
+                        android:textColor="@color/black"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/CreateCardImageView3"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginTop="10dp"
+                        app:srcCompat="@drawable/ic_check_box_black_24dp" />
+
+                    <TextView
+                        android:id="@+id/CreateCardAddChecklist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="Add checklist"
+                        android:textColor="@color/black" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/CreateCardimageView4"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginTop="10dp"
+                        app:srcCompat="@drawable/ic_label_outline_black_24dp" />
+
+                    <TextView
+                        android:id="@+id/CreateCardAddLabels"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="Add labels"
+                        android:textColor="@color/black"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/CreateCardImageView5"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginTop="10dp"
+                        app:srcCompat="@drawable/ic_access_time_black_24dp" />
+
+                    <TextView
+                        android:id="@+id/CreateCardAddDueDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="Add due date"
+                        android:textColor="@color/black"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/CreateCardImageView6"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginTop="10dp"
+                        app:srcCompat="@drawable/ic_person_black_24dp" />
+
+                    <TextView
+                        android:id="@+id/CreateCardAddMembers"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="Add members"
+                        android:textColor="@color/black" />
+
+                </TableRow>
+
+            </TableLayout>
+
+            <TextView
+                android:id="@+id/CreateCardTextView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="-24dp"
-                app:srcCompat="@drawable/ic_chat_black_24dp" />
+                android:textSize="15sp"
+                android:text="Comments" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/CreateCardComment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="It couldn't do like that so I..."
+                    android:inputType="textMultiLine"
+                    android:selectAllOnFocus="true"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/black"/>
+
+                <ImageView
+                    android:id="@+id/CreateCardImageView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="-24dp"
+                    app:srcCompat="@drawable/ic_chat_black_24dp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/CreateCardSave"
+                android:layout_width="114dp"
+                android:layout_height="43dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:background="@color/button"
+                android:text="save"
+                android:textColor="#000000" />
+
 
         </LinearLayout>
-
-        <Button
-            android:id="@+id/CreateCardSave"
-            android:layout_width="114dp"
-            android:layout_height="43dp"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:background="@color/button"
-            android:text="save"
-            android:textColor="#000000" />
-
-
-    </LinearLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
