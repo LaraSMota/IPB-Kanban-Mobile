@@ -2,6 +2,7 @@ package com.example.cardbe.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.widget.Toast
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
@@ -45,6 +46,10 @@ class Home : AppCompatActivity() {
             }
         }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        //menuInflater.inflate(R.menu.homeMenu, menu)
+        return true
+    }
 }
 
 

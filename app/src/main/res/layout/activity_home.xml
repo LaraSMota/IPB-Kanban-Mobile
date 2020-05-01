@@ -8,6 +8,7 @@
     android:background="@color/background">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/homeAppBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/cardBeTheme.AppBarOverlay">
@@ -29,6 +30,7 @@
             app:tabIndicatorColor="@color/white"
             app:tabTextColor="@color/button"
             android:background="?attr/colorPrimary" />
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <ImageView

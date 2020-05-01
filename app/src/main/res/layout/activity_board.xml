@@ -8,7 +8,7 @@
     android:background="@color/background">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/CreateBoardToolbar"
+        android:id="@+id/BoardToolbar"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@color/barColor"
@@ -30,7 +30,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CreateBoardToolbar"
+        app:layout_constraintTop_toBottomOf="@+id/BoardToolbar"
         app:layout_constraintVertical_bias="0"
         app:srcCompat="@drawable/palmeira" />
 
@@ -42,7 +42,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CreateBoardToolbar"
+        app:layout_constraintTop_toBottomOf="@+id/BoardToolbar"
         app:layout_constraintVertical_bias="0">
 
         <LinearLayout

@@ -1,10 +1,14 @@
 package com.example.cardbe
 
 import android.content.Intent
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
 
 class CreateBoard : AppCompatActivity() {
@@ -20,6 +24,21 @@ class CreateBoard : AppCompatActivity() {
         var background = findViewById<ImageView>(R.id.CreateBoardBackground1)
         background.setAlpha(1.0f)
 
+        //Set back button and back button color
+        var toolbar = findViewById<Toolbar>(R.id.CreateBoardToolbar)
+        setSupportActionBar(toolbar)
+
+        val myColorFilter = PorterDuffColorFilter(ResourcesCompat.getColor(resources, R.color.button, null), PorterDuff.Mode.MULTIPLY)
+
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setDisplayShowHomeEnabled(true)
+        toolbar.children.forEach {
+            if (it is ImageButton){
+                it.drawable.colorFilter = myColorFilter
+            }
+        }
+
+        //Set onClickListener for each background image option and keep the choosed one
         backgroundOptions.children.forEach {
             val tableRow = it as TableRow
             tableRow.children.forEach {
@@ -43,5 +62,10 @@ class CreateBoard : AppCompatActivity() {
                 ).show()
             }
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }
