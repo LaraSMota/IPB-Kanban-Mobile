@@ -2,10 +2,7 @@ package com.example.cardbe
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cardbe.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_forgotpassword.*
@@ -32,7 +29,7 @@ class SignUp : AppCompatActivity() {
         }
 
         signUpButton.setOnClickListener {
-            val isFill = firstName.text.isNotEmpty() && lastName.text.isNotEmpty() && email.text.isNotEmpty() && confirmEmail.text.isNotEmpty() && nickname.text.isNotEmpty() && password.text.isNotEmpty()
+            val isFill = firstName.text.isNotBlank() && lastName.text.isNotBlank() && email.text.isNotBlank() && confirmEmail.text.isNotBlank() && nickname.text.isNotBlank() && password.text.isNotBlank()
             if (!isFill){
                 Toast.makeText(
                     applicationContext,
@@ -55,7 +52,26 @@ class SignUp : AppCompatActivity() {
                             Toast.LENGTH_LONG
                         ).show()
                     } else {
-                        startActivity(Intent(this, LoginActivity::class.java))
+                        password.setText(password.text.toString().replace(" ",""), TextView.BufferType.EDITABLE)
+                        if(password.text.toString().length > 6 && password.text.toString().isNotBlank()){
+                            val formPassword = password.text.toString()
+                            val formFirsName = firstName.text.toString()
+                            val formLastName = lastName.text.toString()
+                            val formEmail = email.text.toString()
+                            val formNickname = nickname.text.toString()
+                            Toast.makeText(
+                                applicationContext,
+                                "Sign Up finished",
+                                Toast.LENGTH_LONG
+                            ).show()
+                            finish()
+                        } else {
+                            Toast.makeText(
+                                applicationContext,
+                                "Password too short",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
                     }
                 }
             }
