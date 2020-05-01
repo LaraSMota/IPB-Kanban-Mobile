@@ -7,7 +7,7 @@
             android:name=".CreateTeam"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_create_team"
-            android:theme="@style/FullscreenTheme">
+            android:theme="@style/cardBeTheme.NoActionBar">
 
         </activity>
         <activity

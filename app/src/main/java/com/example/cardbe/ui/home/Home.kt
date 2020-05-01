@@ -3,6 +3,7 @@ package com.example.cardbe.ui.home
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.widget.ImageView
 import android.widget.Toast
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
@@ -11,6 +12,7 @@ import androidx.viewpager.widget.PagerAdapter
 import com.example.cardbe.CreateBoard
 import com.example.cardbe.CreateTeam
 import com.example.cardbe.R
+import com.example.cardbe.Settings
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class Home : AppCompatActivity() {
@@ -22,6 +24,11 @@ class Home : AppCompatActivity() {
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = findViewById(R.id.tabs)
         tabs.setupWithViewPager(viewPager)
+        val menuIcon = findViewById<ImageView>(R.id.HomeMenu)
+
+        menuIcon.setOnClickListener{
+            startActivity(Intent(this, Settings::class.java))
+        }
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
             startActivity(Intent(this, CreateBoard::class.java))
