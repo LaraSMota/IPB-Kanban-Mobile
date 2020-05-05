@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/DeleteAccoutScreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/DeleteAccountToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/barColor"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:titleTextColor="#d7e868"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:title="Delete Account" />
+
+    <ImageView
+        android:id="@+id/DeleteAccountImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/quadradinhosopacos" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="24dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/DeleteAccountImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DeleteAccountToolbar">
+
+        <TextView
+            android:id="@+id/DeleteAccountText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="If you delete your account all your data will be erased, you will not be able to recover your information later. If you still want to delete anyway please confirm your password."
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/DeleteAccountTextView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            android:textSize="15sp"
+            android:text="@string/prompt_confirm_new_password"/>
+
+        <EditText
+            android:id="@+id/DeleteAccountConfirmNewPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="********"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textColorHint="@color/hintColor"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/DeleteCancel"
+                android:layout_width="114dp"
+                android:layout_height="43dp"
+                android:layout_margin="15dp"
+                android:background="@color/button"
+                android:text="Cancel"
+                android:textColor="#000000" />
+
+            <Button
+                android:id="@+id/DeleteConfirm"
+                android:layout_width="114dp"
+                android:layout_height="43dp"
+                android:layout_margin="15dp"
+                android:background="@color/button"
+                android:text="Delete"
+                android:textColor="#000000" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

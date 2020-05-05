@@ -53,7 +53,7 @@
                 android:inputType="textEmailAddress"
                 android:selectAllOnFocus="true"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white"/>
+                android:textColorHint="@color/hintColor" />
 
             <TextView
                 android:id="@+id/SignInTextView2"
@@ -75,7 +75,7 @@
                 android:inputType="textPassword"
                 android:selectAllOnFocus="true"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white"/>
+                android:textColorHint="@color/hintColor" />
 
             <Button
                 android:id="@+id/SignInSignInButton"

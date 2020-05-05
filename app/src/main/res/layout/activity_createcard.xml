@@ -60,7 +60,7 @@
                 android:inputType="textPersonName"
                 android:selectAllOnFocus="true"
                 android:textColor="@color/white"
-                android:textColorHint="@color/black" />
+                android:textColorHint="@color/hintColor" />
 
             <TextView
                 android:id="@+id/CreateCardTextView2"
@@ -85,7 +85,7 @@
                     android:inputType="textMultiLine"
                     android:selectAllOnFocus="true"
                     android:textColor="@color/white"
-                    android:textColorHint="@color/black" />
+                    android:textColorHint="@color/hintColor" />
 
                 <ImageView
                     android:id="@+id/CreateCardImageView1"
@@ -238,7 +238,7 @@
                     android:inputType="textMultiLine"
                     android:selectAllOnFocus="true"
                     android:textColor="@color/white"
-                    android:textColorHint="@color/black"/>
+                    android:textColorHint="@color/hintColor" />
 
                 <ImageView
                     android:id="@+id/CreateCardImageView7"

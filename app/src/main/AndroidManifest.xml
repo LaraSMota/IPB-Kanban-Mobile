@@ -29,6 +29,10 @@
             android:label="About Card Be"
             android:theme="@style/cardBeTheme.NoActionBar" />
         <activity
+            android:name=".DeleteAccount"
+            android:label="Delete Account"
+            android:theme="@style/cardBeTheme.NoActionBar" />
+        <activity
             android:name=".Board"
             android:label="Board"
             android:theme="@style/cardBeTheme.NoActionBar" />
