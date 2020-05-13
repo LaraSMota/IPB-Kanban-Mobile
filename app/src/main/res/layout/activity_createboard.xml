@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0"
-        app:title="Board"
+        app:title="@string/board_title"
         app:titleTextColor="#d7e868" />
 
     <ScrollView
@@ -55,7 +55,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Project A"
+                android:hint="@string/example_board_title"
+                android:importantForAutofill="no"
                 android:inputType="textPersonName"
                 android:selectAllOnFocus="true"
                 android:textColor="@color/black"
@@ -81,7 +82,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:ems="10"
-                    android:hint="Board to organize the team and activities"
+                    android:hint="@string/example_description"
+                    android:importantForAutofill="no"
                     android:inputType="textMultiLine"
                     android:selectAllOnFocus="true"
                     android:textColor="@color/black"
@@ -93,6 +95,7 @@
                     android:layout_height="31dp"
                     android:layout_marginLeft="-31dp"
                     android:layout_marginTop="10dp"
+                    android:contentDescription="@string/description_filter_list_black"
                     app:layout_constraintTop_toTopOf="@+id/title"
                     app:srcCompat="@drawable/ic_filter_list_black_24dp" />
 
@@ -105,9 +108,9 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
-                android:text="Background"
+                android:text="@string/background"
                 android:textColor="@color/black"
-                android:textSize="18dp" />
+                android:textSize="18sp" />
 
             <TableLayout
                 android:id="@+id/CreateBoardTableLayout"
@@ -126,6 +129,7 @@
                         android:layout_weight="1"
                         android:alpha="1"
                         android:scaleType="fitXY"
+                        android:contentDescription="@string/description_white_flower"
                         app:srcCompat="@drawable/florbranca"
                         tools:layout_editor_absoluteX="2dp"
                         tools:layout_editor_absoluteY="155dp" />
@@ -137,6 +141,7 @@
                         android:layout_weight="1"
                         android:alpha="0.5"
                         android:scaleType="fitXY"
+                        android:contentDescription="@string/description_fruits"
                         app:srcCompat="@drawable/frutas"
                         tools:layout_editor_absoluteX="2dp"
                         tools:layout_editor_absoluteY="155dp" />
@@ -153,6 +158,7 @@
                         android:layout_weight="1"
                         android:alpha="0.5"
                         android:scaleType="fitXY"
+                        android:contentDescription="@string/description_roses"
                         app:srcCompat="@drawable/rosas"
                         tools:layout_editor_absoluteX="2dp"
                         tools:layout_editor_absoluteY="155dp" />
@@ -164,6 +170,7 @@
                         android:layout_weight="1"
                         android:alpha="0.5"
                         android:scaleType="fitXY"
+                        android:contentDescription="@string/description_palmeira_tree"
                         app:srcCompat="@drawable/palmeira"
                         tools:layout_editor_absoluteX="2dp"
                         tools:layout_editor_absoluteY="155dp" />
@@ -178,7 +185,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/button"
                 android:enabled="true"
-                android:text="save"
+                android:text="@string/save_button"
                 android:textColor="#000000" />
 
         </LinearLayout>

@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:title="About CardBe" />
+        app:title="@string/about_card_be_title"/>
 
     <ImageView
         android:id="@+id/AboutCardBeImageView"
@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/description_quadradinhos"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/quadradinhosopacos" />
@@ -47,9 +48,9 @@
             android:id="@+id/profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CardBe is a software designed for the subject 'Multimedia Application Development', taught at Polytechnic Institute of Bragança for a master degree in Information Systems. This project was built in a collaboration of the students: Aline Lopes, Lara Mota, Leonardo Costa and Lucas Maltauro under the tutor of the Doctor Professor Paulo Alves. \n\n Logo made by @spacegirl.ag"
+            android:text="@string/about_text"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
     </LinearLayout>
 
 

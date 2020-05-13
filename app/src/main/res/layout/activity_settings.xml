@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:title="Settings" />
+        app:title="@string/settings_title" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,81 +37,81 @@
             android:id="@+id/SettingsGeneral"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="General"
+            android:text="@string/general"
             android:textColor="@color/greenB"
-            android:textSize="25dp" />
+            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/SettingsEditProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Edit Profile"
+            android:text="@string/edit_profile_title"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/SettingsChangePassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Change Password"
+            android:text="@string/change_password_title"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/SettingsReportaProblem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Report a Problem"
+            android:text="@string/report_problem_title"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/SettingsDeleteAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Delete Account"
+            android:text="@string/delete_account_title"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/SettingsAboutCardBe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="About CardBe"
+            android:text="@string/about_card_be_title"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/SettingsLogout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Logout"
+            android:text="@string/logout"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/SettingsNotifications"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Notifications"
+            android:text="@string/notifications"
             android:textColor="@color/greenB"
-            android:textSize="25dp" />
+            android:textSize="25sp" />
 
         <Switch
             android:id="@+id/SettingsEnableNotifications"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Enable"
+            android:text="@string/enable"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
     </LinearLayout>
 
@@ -123,6 +123,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
+        android:contentDescription="@string/description_quadradinhos"
         app:srcCompat="@drawable/quadradinhosopacos" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:title="Report a Problem" />
+        app:title="@string/report_problem_title" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -30,6 +30,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
+        android:contentDescription="@string/description_quadradinhos"
         app:srcCompat="@drawable/quadradinhosopacos" />
 
     <LinearLayout
@@ -46,8 +47,8 @@
             android:id="@+id/problem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="If you have any problem, please contact us and we will take a look at your situation: \n\nE-mail: cardbe@email.com\nPhone: +351 XXX XXX XXX"
+            android:text="@string/report_problem_text"
             android:textColor="@color/white"
-            android:textSize="20dp"/>
+            android:textSize="20sp"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

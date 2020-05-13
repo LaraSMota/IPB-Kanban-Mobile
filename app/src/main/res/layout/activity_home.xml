@@ -25,6 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:contentDescription="@string/description_menu_green"
                 app:srcCompat="@drawable/ic_menu_green_24dp" />
 
             <TextView
@@ -55,6 +56,7 @@
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
         android:layout_gravity="bottom|end"
+        android:contentDescription="@string/description_quadradinhos"
         app:srcCompat="@drawable/quadradinhosopacos" />
 
     <androidx.viewpager.widget.ViewPager

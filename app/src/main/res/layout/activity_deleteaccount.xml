@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:title="Delete Account" />
+        app:title="@string/delete_account_title" />
 
     <ImageView
         android:id="@+id/DeleteAccountImageView"
@@ -31,6 +31,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
+        android:contentDescription="@string/description_quadradinhos"
         app:srcCompat="@drawable/quadradinhosopacos" />
 
     <LinearLayout
@@ -47,9 +48,9 @@
             android:id="@+id/DeleteAccountText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="If you delete your account all your data will be erased, you will not be able to recover your information later. If you still want to delete anyway please confirm your password."
+            android:text="@string/delete_account_text"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/DeleteAccountTextView2"
@@ -58,14 +59,15 @@
             android:textColor="@color/white"
             android:layout_marginTop="20dp"
             android:textSize="15sp"
-            android:text="@string/prompt_confirm_new_password"/>
+            android:text="@string/prompt_confirm_password"/>
 
         <EditText
             android:id="@+id/DeleteAccountConfirmNewPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="********"
+            android:importantForAutofill="no"
+            android:hint="@string/secret_password"
             android:inputType="textPassword"
             android:textColor="@color/white"
             android:textColorHint="@color/hintColor"/>
@@ -82,7 +84,7 @@
                 android:layout_height="43dp"
                 android:layout_margin="15dp"
                 android:background="@color/button"
-                android:text="Cancel"
+                android:text="@string/cancel_button"
                 android:textColor="#000000" />
 
             <Button
@@ -91,7 +93,7 @@
                 android:layout_height="43dp"
                 android:layout_margin="15dp"
                 android:background="@color/button"
-                android:text="Delete"
+                android:text="@string/delete_button"
                 android:textColor="#000000" />
         </LinearLayout>
     </LinearLayout>
