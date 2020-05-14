@@ -3,14 +3,13 @@ package com.example.cardbe
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.ImageButton
-import android.widget.ListView
-import android.widget.SearchView
+import android.widget.*
+import android.widget.AdapterView.OnItemClickListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
+
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -27,9 +26,14 @@ class CreateTeam : AppCompatActivity() {
         val listViewSelected = findViewById<ListView>(R.id.CreateTeamListViewSelected)
         var users = mutableListOf("Lara", "Aline", "Lucas", "Leonardo")
         var adapterList = mutableListOf("Lara", "Aline", "Lucas", "Leonardo")
+        var adapterListSelected = mutableListOf("")
 
         val myAdapter = ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, adapterList)
         listView.adapter = myAdapter
+        val myAdapterSelected = ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, adapterListSelected)
+        listViewSelected.adapter = myAdapterSelected
+        myAdapterSelected.clear()
+        runOnUiThread { myAdapterSelected.notifyDataSetChanged() }
 
         search.setOnCloseListener {
             myAdapter.clear()
@@ -55,8 +59,25 @@ class CreateTeam : AppCompatActivity() {
                 }
                 return false
             }
-
         })
+
+        listView.onItemClickListener =
+            OnItemClickListener { parent, view, position, id ->
+                var add = true
+                for(item in 0 until  myAdapterSelected.count step 1){
+                    add = add && !myAdapterSelected.getItem(item).equals(myAdapter.getItem(position))
+                }
+                if (add){
+                    myAdapterSelected.insert(myAdapter.getItem(position), myAdapterSelected.count)
+                    runOnUiThread { myAdapterSelected.notifyDataSetChanged() }
+                }
+            }
+
+        listViewSelected.onItemClickListener =
+            OnItemClickListener { parent, view, position, id ->
+                myAdapterSelected.remove(myAdapterSelected.getItem(position))
+                runOnUiThread { myAdapterSelected.notifyDataSetChanged() }
+            }
 
         //Set back button and back button color
         var toolbar = findViewById<Toolbar>(R.id.CreateTeamToolbar)
