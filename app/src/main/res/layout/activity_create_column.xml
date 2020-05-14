@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/CreateBoardTeam"
+    android:id="@+id/com.example.cardbe.CreateColumn"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/CreateTeamToolbar"
+        android:id="@+id/CreateColumnToolbar"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@color/barColor"
@@ -19,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0"
-        app:title="Team"
+        app:title="Column"
         app:titleTextColor="#d7e868" />
 
     <ScrollView
@@ -29,7 +28,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CreateTeamToolbar">
+        app:layout_constraintTop_toBottomOf="@+id/CreateColumnToolbar">
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -42,7 +41,7 @@
             app:layout_constraintTop_toBottomOf="@+id/CreateBoardToolbar">
 
             <TextView
-                android:id="@+id/CreateTeamTextView1"
+                android:id="@+id/CreateColumnTextView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
@@ -51,7 +50,7 @@
                 android:text="@string/title" />
 
             <EditText
-                android:id="@+id/CreateTeamTitle"
+                android:id="@+id/CreateColumnTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -61,42 +60,9 @@
                 android:textColor="@color/black"
                 android:textColorHint="@color/hintColor"/>
 
-            <TextView
-                android:id="@+id/CreateTeamTextView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginTop="10dp"
-                android:textSize="15sp"
-                android:text="Members" />
-
-
-            <SearchView
-                android:id="@+id/CreateTeamSearch"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <ListView
-                android:id="@+id/CreateTeamListView"
-                android:layout_width="match_parent"
-                android:layout_height="200dp" />
-
-            <TextView
-                android:id="@+id/CreateTeamTextView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginTop="10dp"
-                android:textSize="15sp"
-                android:text="Click to remove selected members:" />
-
-            <ListView
-                android:id="@+id/CreateTeamListViewSelected"
-                android:layout_width="match_parent"
-                android:layout_height="200dp" />
 
             <Button
-                android:id="@+id/CreateBoardSaveButton"
+                android:id="@+id/CreateColumnSaveButton"
                 android:layout_width="114dp"
                 android:layout_height="43dp"
                 android:layout_gravity="center"
