@@ -1,9 +1,11 @@
 package com.example.cardbe
 
+import android.content.Context
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -11,6 +13,12 @@ import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
+import com.example.cardbe.data.NetworkUtils
+import com.example.cardbe.data.model.CardModel
+import com.example.cardbe.data.model.CollumnModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -40,7 +48,7 @@ class CreateColumn : AppCompatActivity() {
         }
         saveButton.setOnClickListener{
             if(title.text.toString().isNotBlank()){
-                finish()
+                postDataCollumn(title.text.toString(), (1 until 100).random())
             } else {
                 Toast.makeText(
                     applicationContext,
@@ -53,5 +61,24 @@ class CreateColumn : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    fun postDataCollumn(title: String, boardId: Int){
+        val post = CollumnModel(null, title, boardId)
+        val callback = NetworkUtils.request().postCollumn(post)
+
+        callback.enqueue(object : Callback<CollumnModel> {
+            override fun onFailure(call: Call<CollumnModel>, t: Throwable) {
+                Log.d("postDataCollumnFailuere", t.message.toString())
+            }
+
+            override fun onResponse(call: Call<CollumnModel>, response: Response<CollumnModel>) {
+                if (!response.isSuccessful){
+                    Log.d("postDataCollumnode", "Code: " + response.code())
+                    return
+                }
+                finish()
+            }
+        })
     }
 }

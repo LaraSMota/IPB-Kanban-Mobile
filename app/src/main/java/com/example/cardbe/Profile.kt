@@ -5,12 +5,18 @@ import android.content.Intent
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
+import android.util.Log
 import android.view.Window
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
+import com.example.cardbe.data.NetworkUtils
+import com.example.cardbe.data.model.UserModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class Profile : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,5 +86,64 @@ class Profile : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    fun getDataUser() {
+        val callback = NetworkUtils.request().getUsers(null, null, null)
+
+        callback.enqueue(object : Callback<List<UserModel>> {
+            override fun onFailure(call: Call<List<UserModel>>, t: Throwable) {
+                Log.d("getDataUserFailuere", t.message.toString())
+            }
+
+            override fun onResponse(call: Call<List<UserModel>>, response: Response<List<UserModel>>) {
+                if (!response.isSuccessful){
+                    Log.d("getDataUserCode", "Code: " + response.code())
+                    return
+                }
+
+//                var posts = response.body()
+//                posts?.forEach {
+//                    var content = ""
+//                    content += "ID: " + it.board_id + "\n"
+//                    content += "Title: " + it.title + "\n"
+//                    content += "Body: " + it.description + "\n\n"
+//                    text.append(content)
+//                }
+            }
+        })
+    }
+
+    fun updateDataUser(){
+        val post = UserModel(null,
+            "First Mobile Board",
+            "Primeiro Board Criado Via app no banco",
+            "null",
+            "null",
+            "null")
+        val callback = NetworkUtils.request().putUser(1, post)
+
+        callback.enqueue(object : Callback<UserModel> {
+            override fun onFailure(call: Call<UserModel>, t: Throwable) {
+                Log.d("updateDataUserFailuere", t.message.toString())
+            }
+
+            override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
+                if (!response.isSuccessful){
+                    Log.d("updateDataUserCode", "Code: " + response.code())
+                    return
+                }
+
+//                var postResponse : BoardModel? = response.body()
+//
+//                var content = ""
+//                content += "Code: " + response.code() + "\n"
+//                content += "ID: " + (postResponse?.board_id ?: "empty") + "\n"
+//                content += "Title: " + (postResponse?.title ?: "empty") + "\n"
+//                content += "Body: " + (postResponse?.description ?: "empty") + "\n\n"
+//
+//                text.append(content)
+            }
+        })
     }
 }

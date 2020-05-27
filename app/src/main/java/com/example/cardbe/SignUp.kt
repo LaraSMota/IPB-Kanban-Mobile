@@ -2,10 +2,16 @@ package com.example.cardbe
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cardbe.data.NetworkUtils
+import com.example.cardbe.data.model.UserModel
 import com.example.cardbe.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_forgotpassword.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SignUp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,7 +74,7 @@ class SignUp : AppCompatActivity() {
                         } else {
                             Toast.makeText(
                                 applicationContext,
-                                "Password too short",
+                                R.string.invalid_password,
                                 Toast.LENGTH_LONG
                             ).show()
                         }
@@ -76,5 +82,39 @@ class SignUp : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    fun postDataUser(){
+        //val text = findViewById<TextView>(R.id.BoardScreenCollumn1Card1Title)
+        val post = UserModel(null,
+            "First Mobile Board",
+            "Primeiro Board Criado Via app no banco",
+            "null",
+            "null",
+            "null")
+        val callback = NetworkUtils.request().postUser(post)
+
+        callback.enqueue(object : Callback<UserModel> {
+            override fun onFailure(call: Call<UserModel>, t: Throwable) {
+                Log.d("postDataUserFailuere", t.message.toString())
+            }
+
+            override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
+                if (!response.isSuccessful){
+                    Log.d("postDataUserCode", "Code: " + response.code())
+                    return
+                }
+
+//                var postResponse : BoardModel? = response.body()
+//
+//                var content = ""
+//                content += "Code: " + response.code() + "\n"
+//                content += "ID: " + (postResponse?.board_id ?: "empty") + "\n"
+//                content += "Title: " + (postResponse?.title ?: "empty") + "\n"
+//                content += "Body: " + (postResponse?.description ?: "empty") + "\n\n"
+//
+//                text.append(content)
+            }
+        })
     }
 }

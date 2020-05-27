@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cardbe">
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:theme="@style/cardBeTheme"
         android:icon="@drawable/icon"
+        android:usesCleartextTraffic="true"
         android:label="@string/app_name">
         <activity
             android:name=".SplashScreen"
@@ -20,11 +22,13 @@
             android:name=".CreateTeam"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_create_team"
-            android:theme="@style/cardBeTheme.NoActionBar"> </activity>
+            android:theme="@style/cardBeTheme.NoActionBar"
+            android:noHistory="true"> </activity>
         <activity
             android:name=".CreateColumn"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/cardBeTheme.NoActionBar"> </activity>
+            android:theme="@style/cardBeTheme.NoActionBar"
+            android:noHistory="true"> </activity>
         <activity
             android:name=".ui.home.Home"
             android:label="@string/app_name"
@@ -32,7 +36,8 @@
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="@string/app_name"
-            android:theme="@style/cardBeTheme.NoActionBar">
+            android:theme="@style/cardBeTheme.NoActionBar"
+            android:noHistory="true">
 
         </activity>
         <activity
@@ -58,7 +63,8 @@
         <activity
             android:name=".CreateCard"
             android:label="Create Card"
-            android:theme="@style/cardBeTheme.NoActionBar" />
+            android:theme="@style/cardBeTheme.NoActionBar"
+            android:noHistory="true" />
         <activity
             android:name=".ForgotPassword"
             android:label="Forgot Password"

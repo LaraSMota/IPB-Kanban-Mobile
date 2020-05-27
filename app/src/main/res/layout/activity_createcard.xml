@@ -61,7 +61,7 @@
                 android:hint="@string/example_card_title"
                 android:inputType="textPersonName"
                 android:selectAllOnFocus="true"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textColorHint="@color/hintColor" />
 
             <TextView
@@ -87,7 +87,7 @@
                     android:hint="@string/example_card_description"
                     android:inputType="textMultiLine"
                     android:selectAllOnFocus="true"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/hintColor" />
 
                 <ImageView
@@ -247,7 +247,7 @@
                     android:hint="@string/example_comment"
                     android:inputType="textMultiLine"
                     android:selectAllOnFocus="true"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/hintColor" />
 
                 <ImageView

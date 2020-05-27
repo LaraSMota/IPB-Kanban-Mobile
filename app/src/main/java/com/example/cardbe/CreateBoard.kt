@@ -1,15 +1,22 @@
 package com.example.cardbe
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
+import com.example.cardbe.data.NetworkUtils
+import com.example.cardbe.data.model.BoardModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class CreateBoard : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +60,7 @@ class CreateBoard : AppCompatActivity() {
 
         saveButton.setOnClickListener{
             if (title.text.toString().isNotEmpty()){
-                startActivity(Intent(this, Board::class.java))
+                postDataBoard(this, title.text.toString(), description.text.toString(), background.id.toString())
             } else {
                 Toast.makeText(
                     applicationContext,
@@ -67,5 +74,24 @@ class CreateBoard : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    fun postDataBoard(contexto : Context, title: String, description: String?, background: String){
+        val post = BoardModel(null, title, description, background)
+        val callback = NetworkUtils.request().postBoard(post)
+
+        callback.enqueue(object : Callback<BoardModel> {
+            override fun onFailure(call: Call<BoardModel>, t: Throwable) {
+                Log.d("postDataBoardFailuere", t.message.toString())
+            }
+
+            override fun onResponse(call: Call<BoardModel>, response: Response<BoardModel>) {
+                if (!response.isSuccessful){
+                    Log.d("postDataBoardCode", "Code: " + response.code())
+                    return
+                }
+                startActivity(Intent(contexto, Board::class.java))
+            }
+        })
     }
 }
