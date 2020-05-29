@@ -2,7 +2,7 @@ package com.example.cardbe.data
 
 /**
  * A generic class that holds a value with its loading status.
- * @param <T>
+ * @param <
  */
 sealed class Result<out T : Any> {
 

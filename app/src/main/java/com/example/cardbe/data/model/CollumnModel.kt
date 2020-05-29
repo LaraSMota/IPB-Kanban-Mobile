@@ -2,7 +2,7 @@ package com.example.cardbe.data.model
 
 data class CollumnModel(
 
-    val collumn_id : Int?,
+    val collumnId : Int?,
 
     val title : String,
 

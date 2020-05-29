@@ -2,7 +2,7 @@ package com.example.cardbe.data.model
 
 data class CardModel(
 
-    val card_id : Int?,
+    val cardId : Int?,
 
     val title : String,
 
@@ -18,5 +18,5 @@ data class CardModel(
 
     val checklist : String?,
 
-    val collumn_id : Int
+    val collumnId : Int
 )

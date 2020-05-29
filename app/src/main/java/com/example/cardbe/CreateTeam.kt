@@ -1,5 +1,6 @@
 package com.example.cardbe
 
+import android.content.Intent
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
@@ -13,6 +14,7 @@ import androidx.core.view.children
 import com.example.cardbe.data.NetworkUtils
 import com.example.cardbe.data.model.BoardModel
 import com.example.cardbe.data.model.UserModel
+import com.example.cardbe.ui.home.Home
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -107,7 +109,7 @@ class CreateTeam : AppCompatActivity() {
     }
 
     fun getDataUser() {
-        val callback = NetworkUtils.request().getUsers(null, null, null)
+        val callback = NetworkUtils.request().getUsers()
 
         callback.enqueue(object : Callback<List<UserModel>> {
             override fun onFailure(call: Call<List<UserModel>>, t: Throwable) {
@@ -131,6 +133,11 @@ class CreateTeam : AppCompatActivity() {
             }
         })
     }
+
+//    override fun onBackPressed() {
+//        super.onBackPressed()
+//        startActivity(Intent(this, Home::class.java))
+//    }
 
     //POST EM ALGUM LUGAR
 }

@@ -2,7 +2,7 @@ package com.example.cardbe.data.model
 
 data class BoardModel(
 
-    val board_id : Int?,
+    val boardId : Int?,
 
     val title : String,
 

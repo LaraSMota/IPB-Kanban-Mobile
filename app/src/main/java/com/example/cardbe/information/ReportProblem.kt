@@ -1,4 +1,4 @@
-package com.example.cardbe
+package com.example.cardbe.information
 
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
@@ -8,18 +8,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
+import com.example.cardbe.R
 
-class AboutCardBe  : AppCompatActivity() {
+class ReportProblem : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_aboutcardbe)
+        setContentView(R.layout.activity_reportaproblem)
 
         //Set back button and back button color
-        var toolbar = findViewById<Toolbar>(R.id.AboutCardBeToolbar)
+        var toolbar = findViewById<Toolbar>(R.id.ReportAProblemtoolbar)
         setSupportActionBar(toolbar)
 
-        val myColorFilter = PorterDuffColorFilter(ResourcesCompat.getColor(resources, R.color.button, null), PorterDuff.Mode.MULTIPLY)
+        val myColorFilter = PorterDuffColorFilter(ResourcesCompat.getColor(resources,
+            R.color.button, null), PorterDuff.Mode.MULTIPLY)
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)

@@ -124,6 +124,7 @@
 
                     <ImageView
                         android:id="@+id/CreateBoardBackground1"
+                        android:transitionName="florbranca"
                         android:layout_height="140dp"
                         android:layout_column="1"
                         android:layout_weight="1"
@@ -136,6 +137,7 @@
 
                     <ImageView
                         android:id="@+id/CreateBoardBackground2"
+                        android:transitionName="frutas"
                         android:layout_height="140dp"
                         android:layout_column="2"
                         android:layout_weight="1"
@@ -153,6 +155,7 @@
 
                     <ImageView
                         android:id="@+id/CreateBoardBackground3"
+                        android:transitionName="rosas"
                         android:layout_height="140dp"
                         android:layout_column="1"
                         android:layout_weight="1"
@@ -165,6 +168,7 @@
 
                     <ImageView
                         android:id="@+id/CreateBoardBackground4"
+                        android:transitionName="palmeiras"
                         android:layout_height="140dp"
                         android:layout_column="2"
                         android:layout_weight="1"

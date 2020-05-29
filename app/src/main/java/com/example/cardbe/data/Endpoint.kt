@@ -4,6 +4,7 @@ import com.example.cardbe.data.model.BoardModel
 import com.example.cardbe.data.model.CardModel
 import com.example.cardbe.data.model.CollumnModel
 import com.example.cardbe.data.model.UserModel
+import com.example.cardbe.recyclerView.HomeItem
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -11,15 +12,11 @@ interface Endpoint {
 
 // ----------------------------- BOARDS METHODS-----------------------------
 
-//    @GET("Boards")
-//    fun getPosts() : Call<List<BoardModel>>
-
     @GET("Boards")
-    fun getBoard(
-        @Query("id") userId: Int?,
-        @Query("_sort") sort: String?,
-        @Query("_order") order: String?
-    ) : Call<List<BoardModel>>
+    fun getBoardToRecyclerView() : Call<List<HomeItem>>
+
+    @GET("Boards/{id}")
+    fun getBoard(@Path("id") boardId : Int) : Call<BoardModel>
 
     @POST("Boards")
     fun postBoard(@Body post: BoardModel) : Call<BoardModel>
@@ -34,15 +31,8 @@ interface Endpoint {
 
 // ----------------------------- CARD METHODS-----------------------------
 
-//    @GET("Cards")
-//    fun getPosts() : Call<List<CardModel>>
-
     @GET("Cards")
-    fun getCards(
-        @Query("id") userId: Int?,
-        @Query("_sort") sort: String?,
-        @Query("_order") order: String?
-    ) : Call<List<CardModel>>
+    fun getPosts() : Call<List<CardModel>>
 
     @POST("Cards")
     fun postCard(@Body post: CardModel) : Call<CardModel>
@@ -57,15 +47,8 @@ interface Endpoint {
 
 // ----------------------------- COLLUMN METHODS-----------------------------
 
-//    @GET("Collumns")
-//    fun getPosts() : Call<List<CollumnModel>>
-
     @GET("Collumns")
-    fun getCollumns(
-        @Query("id") userId: Int?,
-        @Query("_sort") sort: String?,
-        @Query("_order") order: String?
-    ) : Call<List<CollumnModel>>
+    fun getCollums() : Call<List<CollumnModel>>
 
     @POST("Collumns")
     fun postCollumn(@Body post: CollumnModel) : Call<CollumnModel>
@@ -80,15 +63,11 @@ interface Endpoint {
 
 // ----------------------------- USER METHODS-----------------------------
 
-//    @GET("Users")
-//    fun getPosts() : Call<List<UserModel>>
+    @GET("Users/{id}")
+    fun getUsers(@Path("id") id:Int) : Call<UserModel>
 
     @GET("Users")
-    fun getUsers(
-        @Query("id") userId: Int?,
-        @Query("_sort") sort: String?,
-        @Query("_order") order: String?
-    ) : Call<List<UserModel>>
+    fun getUsers() : Call<List<UserModel>>
 
     @POST("Users")
     fun postUser(@Body post: UserModel) : Call<UserModel>

@@ -111,7 +111,8 @@
 
 
     <!-- Strings related to sing up screen -->
-    <string name="terms">I agree with all the Terms Services</string>
+    <string name="terms">I agree with all the</string>
+    <string name="termlink">Terms Services</string>
 
 
     <!-- Strings related to sing up screen -->

@@ -20,9 +20,14 @@ import com.example.cardbe.data.NetworkUtils.Companion.request
 import com.example.cardbe.data.model.BoardModel
 import com.example.cardbe.data.model.CardModel
 import com.example.cardbe.data.model.CollumnModel
+import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
+//ACRESCENTAR BOTÃO DE ATUALIZAR
+//ATUALIZAR TELA QUANDO VOLTAR DE OUTRA ACTIVITY
+//GERAR O CONTEUDO DINAMICAMENTE
 
 
 class Board : AppCompatActivity() {
@@ -53,6 +58,8 @@ class Board : AppCompatActivity() {
             }
         }
 
+        val boardId = intent.getStringExtra("BoardId")
+        getDataBoard(boardId!!.toInt())
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -73,37 +80,26 @@ class Board : AppCompatActivity() {
                 startActivity(Intent(this, CreateColumn::class.java))
                 true
             }
-            //R.id.help -> {
-            //    showHelp()
-            //    true
-            //}
             else -> super.onOptionsItemSelected(item)
         }
     }
 
-    fun getDataBoard() {
+    fun getDataBoard(boardId: Int) {
         val text = findViewById<TextView>(R.id.BoardScreenCollumn1Card1Title)
-        val callback = request().getBoard(null, null, null)
+        val callback = request().getBoard(boardId)
 
-        callback.enqueue(object : Callback<List<BoardModel>> {
-            override fun onFailure(call: Call<List<BoardModel>>, t: Throwable) {
+        callback.enqueue(object : Callback<BoardModel> {
+            override fun onFailure(call: Call<BoardModel>, t: Throwable) {
                 Log.d("getDataBoardFailuere", t.message.toString())
             }
 
-            override fun onResponse(call: Call<List<BoardModel>>, response: Response<List<BoardModel>>) {
+            override fun onResponse(call: Call<BoardModel>, response: Response<BoardModel>) {
                 if (!response.isSuccessful){
                     Log.d("getDataBoardCode", "Code: " + response.code())
                     return
                 }
-
-                var posts = response.body()
-                posts?.forEach {
-                    var content = ""
-                    content += "ID: " + it.board_id + "\n"
-                    content += "Title: " + it.title + "\n"
-                    content += "Body: " + it.description + "\n\n"
-                    text.append(content)
-                }
+                val boardTitle = findViewById<Toolbar>(R.id.BoardToolbar)
+                boardTitle.title = response.body()!!.title
             }
         })
     }
@@ -143,7 +139,7 @@ class Board : AppCompatActivity() {
 
                 var content = ""
                 content += "Code: " + response.code() + "\n"
-                content += "ID: " + (postResponse?.board_id ?: "empty") + "\n"
+                content += "ID: " + (postResponse?.boardId ?: "empty") + "\n"
                 content += "Title: " + (postResponse?.title ?: "empty") + "\n"
                 content += "Body: " + (postResponse?.description ?: "empty") + "\n\n"
 
@@ -152,57 +148,39 @@ class Board : AppCompatActivity() {
         })
     }
 
-    fun getDataCollumn() {
-        val callback = request().getCollumns(null, null, null)
-
-        callback.enqueue(object : Callback<List<CollumnModel>> {
-            override fun onFailure(call: Call<List<CollumnModel>>, t: Throwable) {
-                Log.d("getDataCollumnFailuere", t.message.toString())
-            }
-
-            override fun onResponse(call: Call<List<CollumnModel>>, response: Response<List<CollumnModel>>) {
-                if (!response.isSuccessful){
-                    Log.d("getDataCollumnCode", "Code: " + response.code())
-                    return
-                }
-
-//                var posts = response.body()
-//                posts?.forEach {
-//                    var content = ""
-//                    content += "ID: " + it.board_id + "\n"
-//                    content += "Title: " + it.title + "\n"
-//                    content += "Body: " + it.description + "\n\n"
-//                    text.append(content)
+//    fun getDataCollumn() {
+//        val callback = request().getCollumns(nu)
+//
+//        callback.enqueue(object : Callback<List<CollumnModel>> {
+//            override fun onFailure(call: Call<List<CollumnModel>>, t: Throwable) {
+//                Log.d("getDataCollumnFailuere", t.message.toString())
+//            }
+//
+//            override fun onResponse(call: Call<List<CollumnModel>>, response: Response<List<CollumnModel>>) {
+//                if (!response.isSuccessful){
+//                    Log.d("getDataCollumnCode", "Code: " + response.code())
+//                    return
 //                }
-            }
-        })
-    }
+//            }
+//        })
+//    }
 
-    fun getDataCard() {
-        val text = findViewById<TextView>(R.id.BoardScreenCollumn1Card1Title)
-        val callback = request().getCards(null, null, null)
-
-        callback.enqueue(object : Callback<List<CardModel>> {
-            override fun onFailure(call: Call<List<CardModel>>, t: Throwable) {
-                Log.d("getDataBoardFailuere", t.message.toString())
-            }
-
-            override fun onResponse(call: Call<List<CardModel>>, response: Response<List<CardModel>>) {
-                if (!response.isSuccessful){
-                    Log.d("getDataBoardCode", "Code: " + response.code())
-                    return
-                }
-
-//                var posts = response.body()
-//                posts?.forEach {
-//                    var content = ""
-//                    content += "ID: " + it.board_id + "\n"
-//                    content += "Title: " + it.title + "\n"
-//                    content += "Body: " + it.description + "\n\n"
-//                    text.append(content)
+//    fun getDataCard() {
+//        val text = findViewById<TextView>(R.id.BoardScreenCollumn1Card1Title)
+//        val callback = request().getCards()
+//
+//        callback.enqueue(object : Callback<List<CardModel>> {
+//            override fun onFailure(call: Call<List<CardModel>>, t: Throwable) {
+//                Log.d("getDataBoardFailuere", t.message.toString())
+//            }
+//
+//            override fun onResponse(call: Call<List<CardModel>>, response: Response<List<CardModel>>) {
+//                if (!response.isSuccessful){
+//                    Log.d("getDataBoardCode", "Code: " + response.code())
+//                    return
 //                }
-            }
-        })
-    }
+//            }
+//        })
+//    }
 
 }

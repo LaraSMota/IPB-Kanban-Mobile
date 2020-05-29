@@ -16,29 +16,31 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class ChangePassword : AppCompatActivity() {
+    var userId = 3
+    var firsName = ""
+    var lastName = ""
+    var email = ""
+    var nickname = ""
+    var password = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_changepassword)
-        var password = "Exemplo"
         val passwordInput = findViewById<EditText>(R.id.ChangePasswordPassword)
         val newPassword = findViewById<EditText>(R.id.ChangePasswordNewPassword)
         val confirmPassword = findViewById<EditText>(R.id.ChangePasswordConfirmNewPassword)
         val sendButton = findViewById<Button>(R.id.ChangePasswordSaveButton)
 
         sendButton.setOnClickListener{
+            getDataUser()
             newPassword.setText(newPassword.text.toString().replace(" ",""), TextView.BufferType.EDITABLE)
             confirmPassword.setText(confirmPassword.text.toString().replace(" ",""), TextView.BufferType.EDITABLE)
             if(passwordInput.text.toString() == password){
                 if(newPassword.text.toString() == confirmPassword.text.toString()){
                     if(newPassword.text.toString().length > 6 && newPassword.text.toString().isNotBlank()){
                         password = newPassword.text.toString()
-                        Toast.makeText(
-                            applicationContext,
-                            "Password saved",
-                            Toast.LENGTH_LONG
-                        ).show()
-                        finish()
+                        updateDataUser()
                     } else {
                         Toast.makeText(
                             applicationContext,
@@ -82,28 +84,51 @@ class ChangePassword : AppCompatActivity() {
         return true
     }
 
-    fun getDataUser() {
-        val callback = NetworkUtils.request().getUsers(null, null, null)
+    fun updateDataUser(){
+        val post = UserModel(null, firsName, lastName, email, nickname, password)
+        val callback = NetworkUtils.request().putUser(userId, post)
 
-        callback.enqueue(object : Callback<List<UserModel>> {
-            override fun onFailure(call: Call<List<UserModel>>, t: Throwable) {
+        callback.enqueue(object : Callback<UserModel> {
+            override fun onFailure(call: Call<UserModel>, t: Throwable) {
+                Log.d("updateDataUserFailuere", t.message.toString())
+            }
+
+            override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
+                if (!response.isSuccessful){
+                    Log.d("updateDataUserCode", "Code: " + response.code())
+                    return
+                }
+                Toast.makeText(
+                    applicationContext,
+                    "Password saved",
+                    Toast.LENGTH_LONG
+                ).show()
+                finish()
+            }
+        })
+    }
+
+    fun getDataUser() {
+        val callback = NetworkUtils.request().getUsers(userId)
+        callback.enqueue(object : Callback<UserModel> {
+            override fun onFailure(call: Call<UserModel>, t: Throwable) {
                 Log.d("getDataUserFailuere", t.message.toString())
             }
 
-            override fun onResponse(call: Call<List<UserModel>>, response: Response<List<UserModel>>) {
+            override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
                 if (!response.isSuccessful){
                     Log.d("getDataUserCode", "Code: " + response.code())
                     return
                 }
 
-//                var posts = response.body()
-//                posts?.forEach {
-//                    var content = ""
-//                    content += "ID: " + it.board_id + "\n"
-//                    content += "Title: " + it.title + "\n"
-//                    content += "Body: " + it.description + "\n\n"
-//                    text.append(content)
-//                }
+                var posts = response.body()
+                if (posts != null) {
+                    firsName = posts.firstName
+                    lastName = posts.lastName
+                    email = posts.email
+                    nickname = posts.nickname
+                    password = posts.password
+                }
             }
         })
     }

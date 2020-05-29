@@ -7,11 +7,17 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cardbe.data.NetworkUtils
 import com.example.cardbe.data.model.UserModel
+import com.example.cardbe.information.Terms
 import com.example.cardbe.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_forgotpassword.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+//PRECISA TRATAR PARA:
+//NÃO ADIMITIR DUAS CONTAS COM O MESMO EMAIL
+//CRIPTOGRAFAR SENHA
+//NÃO ADMITIR NUMEROS NO FIRST E LASTNAME
+
 
 class SignUp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,8 +33,13 @@ class SignUp : AppCompatActivity() {
         val password = findViewById<EditText>(R.id.SignUpPassword)
         val signUpButton = findViewById<Button>(R.id.SignUpSignUpButton)
         val termBox = findViewById<CheckBox>(R.id.SignUpTermsCheckBox)
+        val termLink = findViewById<TextView>(R.id.SingUpTermsLink)
         var isValid = false
         signUpButton.isEnabled = false
+
+        termLink.setOnClickListener{
+            startActivity(Intent(this, Terms::class.java))
+        }
 
         termBox.setOnClickListener{
             signUpButton.isEnabled = termBox.isChecked
@@ -65,12 +76,7 @@ class SignUp : AppCompatActivity() {
                             val formLastName = lastName.text.toString()
                             val formEmail = email.text.toString()
                             val formNickname = nickname.text.toString()
-                            Toast.makeText(
-                                applicationContext,
-                                "Sign Up finished",
-                                Toast.LENGTH_LONG
-                            ).show()
-                            finish()
+                            postDataUser(formFirsName, formLastName, formEmail, formNickname, formPassword)
                         } else {
                             Toast.makeText(
                                 applicationContext,
@@ -84,14 +90,8 @@ class SignUp : AppCompatActivity() {
         }
     }
 
-    fun postDataUser(){
-        //val text = findViewById<TextView>(R.id.BoardScreenCollumn1Card1Title)
-        val post = UserModel(null,
-            "First Mobile Board",
-            "Primeiro Board Criado Via app no banco",
-            "null",
-            "null",
-            "null")
+    fun postDataUser(fistName: String, lastName: String, email: String, nickname: String, password: String){
+        val post = UserModel(null, fistName, lastName, email, nickname, password)
         val callback = NetworkUtils.request().postUser(post)
 
         callback.enqueue(object : Callback<UserModel> {
@@ -104,16 +104,12 @@ class SignUp : AppCompatActivity() {
                     Log.d("postDataUserCode", "Code: " + response.code())
                     return
                 }
-
-//                var postResponse : BoardModel? = response.body()
-//
-//                var content = ""
-//                content += "Code: " + response.code() + "\n"
-//                content += "ID: " + (postResponse?.board_id ?: "empty") + "\n"
-//                content += "Title: " + (postResponse?.title ?: "empty") + "\n"
-//                content += "Body: " + (postResponse?.description ?: "empty") + "\n\n"
-//
-//                text.append(content)
+                Toast.makeText(
+                    applicationContext,
+                    "Sign Up finished",
+                    Toast.LENGTH_LONG
+                ).show()
+                finish()
             }
         })
     }

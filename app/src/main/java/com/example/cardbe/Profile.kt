@@ -1,7 +1,5 @@
 package com.example.cardbe
 
-import android.app.Dialog
-import android.content.Intent
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
@@ -18,10 +16,13 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 class Profile : AppCompatActivity() {
+    val userId = 3
+    var password = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_profilescreen)
         val firstNameInput = findViewById<EditText>(R.id.EditProfileFirstName)
         val lastNameInput = findViewById<EditText>(R.id.EditProfileLastName)
@@ -34,10 +35,8 @@ class Profile : AppCompatActivity() {
         var email = ""
         var nickname = ""
         var profileImage = R.drawable.ic_person_white_24dp
-        firstNameInput.setText(firstName, TextView.BufferType.EDITABLE)
-        lastNameInput.setText(lastName, TextView.BufferType.EDITABLE)
-        emailInput.setText(email, TextView.BufferType.EDITABLE)
-        nicknameInput.setText(nickname, TextView.BufferType.EDITABLE)
+
+        getDataUser()
 
         //Set back button and back button color
         val toolbar = findViewById<Toolbar>(R.id.EditProfileToolbar)
@@ -64,6 +63,7 @@ class Profile : AppCompatActivity() {
                     firstName = firstNameInput.text.toString()
                     lastName = lastNameInput.text.toString()
                     nickname = nicknameInput.text.toString()
+                    updateDataUser(firstName, lastName, email, nickname)
                     finish()
                 } else {
                     Toast.makeText(
@@ -81,6 +81,7 @@ class Profile : AppCompatActivity() {
                 ).show()
             }
         }
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -89,39 +90,31 @@ class Profile : AppCompatActivity() {
     }
 
     fun getDataUser() {
-        val callback = NetworkUtils.request().getUsers(null, null, null)
-
-        callback.enqueue(object : Callback<List<UserModel>> {
-            override fun onFailure(call: Call<List<UserModel>>, t: Throwable) {
+        val callback = NetworkUtils.request().getUsers(userId)
+        callback.enqueue(object : Callback<UserModel> {
+            override fun onFailure(call: Call<UserModel>, t: Throwable) {
                 Log.d("getDataUserFailuere", t.message.toString())
             }
 
-            override fun onResponse(call: Call<List<UserModel>>, response: Response<List<UserModel>>) {
+            override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
                 if (!response.isSuccessful){
                     Log.d("getDataUserCode", "Code: " + response.code())
                     return
                 }
 
-//                var posts = response.body()
-//                posts?.forEach {
-//                    var content = ""
-//                    content += "ID: " + it.board_id + "\n"
-//                    content += "Title: " + it.title + "\n"
-//                    content += "Body: " + it.description + "\n\n"
-//                    text.append(content)
-//                }
+                val get = response.body()
+                findViewById<EditText>(R.id.EditProfileFirstName).setText(get!!.firstName)
+                findViewById<EditText>(R.id.EditProfileLastName).setText(get!!.lastName)
+                findViewById<EditText>(R.id.EditProfileEmail).setText(get!!.email)
+                findViewById<EditText>(R.id.EditProfileNickname).setText(get!!.nickname)
+                password = get!!.password
             }
         })
     }
 
-    fun updateDataUser(){
-        val post = UserModel(null,
-            "First Mobile Board",
-            "Primeiro Board Criado Via app no banco",
-            "null",
-            "null",
-            "null")
-        val callback = NetworkUtils.request().putUser(1, post)
+    fun updateDataUser(firstName: String, lastName: String, email: String, nickname: String){
+        val body = UserModel(null, firstName, lastName, email, nickname, password)
+        val callback = NetworkUtils.request().putUser(userId, body)
 
         callback.enqueue(object : Callback<UserModel> {
             override fun onFailure(call: Call<UserModel>, t: Throwable) {
@@ -133,16 +126,7 @@ class Profile : AppCompatActivity() {
                     Log.d("updateDataUserCode", "Code: " + response.code())
                     return
                 }
-
-//                var postResponse : BoardModel? = response.body()
-//
-//                var content = ""
-//                content += "Code: " + response.code() + "\n"
-//                content += "ID: " + (postResponse?.board_id ?: "empty") + "\n"
-//                content += "Title: " + (postResponse?.title ?: "empty") + "\n"
-//                content += "Body: " + (postResponse?.description ?: "empty") + "\n\n"
-//
-//                text.append(content)
+                finish()
             }
         })
     }

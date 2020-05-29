@@ -66,7 +66,7 @@ class DeleteAccount  : AppCompatActivity() {
     }
 
     fun getDataUser() {
-        val callback = NetworkUtils.request().getUsers(null, null, null)
+        val callback = NetworkUtils.request().getUsers()
 
         callback.enqueue(object : Callback<List<UserModel>> {
             override fun onFailure(call: Call<List<UserModel>>, t: Throwable) {

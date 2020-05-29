@@ -4,21 +4,25 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
 import com.example.cardbe.data.NetworkUtils
 import com.example.cardbe.data.model.BoardModel
+import com.example.cardbe.ui.home.Home
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class CreateBoard : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -60,7 +64,7 @@ class CreateBoard : AppCompatActivity() {
 
         saveButton.setOnClickListener{
             if (title.text.toString().isNotEmpty()){
-                postDataBoard(this, title.text.toString(), description.text.toString(), background.id.toString())
+                postDataBoard(this, title.text.toString(), description.text.toString(), background.transitionName.toString())
             } else {
                 Toast.makeText(
                     applicationContext,
@@ -69,6 +73,11 @@ class CreateBoard : AppCompatActivity() {
                 ).show()
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this, Home::class.java))
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -90,7 +99,7 @@ class CreateBoard : AppCompatActivity() {
                     Log.d("postDataBoardCode", "Code: " + response.code())
                     return
                 }
-                startActivity(Intent(contexto, Board::class.java))
+                onBackPressed()
             }
         })
     }

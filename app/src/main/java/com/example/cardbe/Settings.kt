@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
+import com.example.cardbe.information.AboutCardBe
+import com.example.cardbe.information.ReportProblem
 import com.example.cardbe.ui.login.LoginActivity
 
 class Settings : AppCompatActivity() {
@@ -72,8 +74,17 @@ class Settings : AppCompatActivity() {
             }
         }
     }
+
+
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
         return true
     }
+
+
+//    override fun onBackPressed() {
+//        super.onBackPressed()
+//        startActivity(Intent(this, Home::class.java))
+//    }
 }
