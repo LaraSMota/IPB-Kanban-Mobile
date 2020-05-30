@@ -28,7 +28,7 @@ class Home : AppCompatActivity() {
 
         menuIcon.setOnClickListener{
             startActivity(Intent(this, Settings::class.java))
-            overridePendingTransition(R.anim.slide_out_left, R.anim.slide_in_right)
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         }
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {

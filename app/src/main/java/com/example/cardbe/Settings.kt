@@ -78,13 +78,12 @@ class Settings : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
-        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
         return true
     }
 
 
-//    override fun onBackPressed() {
-//        super.onBackPressed()
-//        startActivity(Intent(this, Home::class.java))
-//    }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+    }
 }
