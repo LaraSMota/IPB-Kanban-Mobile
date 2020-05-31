@@ -22,12 +22,17 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class CreateBoard : AppCompatActivity() {
+    var boardId: Int? = null
+    var isToUpdate = false
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_createboard)
 
+        if(intent.getStringExtra("BoardId")!! != "CREATE"){
+            isToUpdate = true
+        }
         val description = findViewById<EditText>(R.id.CreateBoardDescription)
         val title = findViewById<EditText>(R.id.CreateBoardTitle)
         val backgroundOptions = findViewById<TableLayout>(R.id.CreateBoardTableLayout)
@@ -64,7 +69,12 @@ class CreateBoard : AppCompatActivity() {
 
         saveButton.setOnClickListener{
             if (title.text.toString().isNotEmpty()){
-                postDataBoard(this, title.text.toString(), description.text.toString(), background.transitionName.toString())
+                if (isToUpdate){
+                    updateDataBoard(this, title.text.toString(), description.text.toString(), background.transitionName.toString())
+                } else {
+                    postDataBoard(this, title.text.toString(), description.text.toString(), background.transitionName.toString())
+                }
+
             } else {
                 Toast.makeText(
                     applicationContext,
@@ -77,7 +87,11 @@ class CreateBoard : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        startActivity(Intent(this, Home::class.java))
+        if(isToUpdate){
+            finish()
+        } else {
+            startActivity(Intent(this, Home::class.java))
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -88,6 +102,26 @@ class CreateBoard : AppCompatActivity() {
     fun postDataBoard(contexto : Context, title: String, description: String?, background: String){
         val post = BoardModel(null, title, description, background)
         val callback = NetworkUtils.request().postBoard(post)
+
+        callback.enqueue(object : Callback<BoardModel> {
+            override fun onFailure(call: Call<BoardModel>, t: Throwable) {
+                Log.d("postDataBoardFailuere", t.message.toString())
+            }
+
+            override fun onResponse(call: Call<BoardModel>, response: Response<BoardModel>) {
+                if (!response.isSuccessful){
+                    Log.d("postDataBoardCode", "Code: " + response.code())
+                    return
+                }
+                onBackPressed()
+            }
+        })
+    }
+
+    fun updateDataBoard(contexto : Context, title: String, description: String?, background: String){
+        val post = BoardModel(null, title, description, background)
+        val boardId = intent.getStringExtra("BoardId")!!.toInt()
+        val callback = NetworkUtils.request().putBoard(boardId, post)
 
         callback.enqueue(object : Callback<BoardModel> {
             override fun onFailure(call: Call<BoardModel>, t: Throwable) {

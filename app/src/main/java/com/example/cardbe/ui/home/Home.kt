@@ -40,7 +40,7 @@ class Home : AppCompatActivity() {
                 findViewById<FloatingActionButton>(R.id.fab).show()
                 findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
                     finish()
-                    startActivity(Intent(this, CreateBoard::class.java))
+                    startActivity(Intent(this, CreateBoard::class.java).putExtra("BoardId", "CREATE"))
                 }
             }
             if (tabs.selectedTabPosition == 1){

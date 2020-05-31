@@ -18,7 +18,7 @@ class NetworkUtils {
         }
 
         fun request() : Endpoint{
-            val retrofitClient = getRetrofitInstance("http://192.168.1.7:52944/api/")
+            val retrofitClient = getRetrofitInstance("http://192.168.1.9:52944/api/")
             return retrofitClient.create(Endpoint::class.java)
         }
     }

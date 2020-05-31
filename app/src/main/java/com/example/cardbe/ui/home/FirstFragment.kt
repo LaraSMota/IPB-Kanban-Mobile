@@ -72,6 +72,7 @@ class FirstFragment : Fragment(), OnHomeItemListener {
     }
 
     override fun onItemClick(item: HomeItem, position: Int) {
+        activity!!.finish()
         startActivity(Intent(context, Board::class.java).putExtra("BoardId", item.boardId.toString()))
     }
 }

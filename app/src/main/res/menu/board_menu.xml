@@ -7,6 +7,17 @@
     <item
         android:title="Add Column"
         android:id="@+id/board_menu_add"
-        app:showAsAction="always"
+        app:showAsAction="ifRoom"
         android:icon="@drawable/ic_add_green_36dp"/>
+
+    <item
+        android:id="@+id/board_menu_Edit"
+        android:icon="@drawable/ic_more_vert_green_24dp"
+        android:title="Edit Board"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/board_menu_Delete"
+        android:icon="@drawable/ic_more_vert_green_24dp"
+        android:title="Delete Board"
+        app:showAsAction="never" />
 </menu>

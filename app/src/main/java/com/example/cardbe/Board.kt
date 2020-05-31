@@ -1,6 +1,7 @@
 package com.example.cardbe
 
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
@@ -9,8 +10,10 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.res.ResourcesCompat
@@ -20,6 +23,7 @@ import com.example.cardbe.data.NetworkUtils.Companion.request
 import com.example.cardbe.data.model.BoardModel
 import com.example.cardbe.data.model.CardModel
 import com.example.cardbe.data.model.CollumnModel
+import com.example.cardbe.ui.home.Home
 import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,9 +33,10 @@ import retrofit2.Response
 
 
 class Board : AppCompatActivity() {
+    var boardId = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        boardId = intent.getStringExtra("BoardId")!!.toInt()
         setContentView(R.layout.activity_board)
         val linearLayout = findViewById<LinearLayout>(R.id.BoardLinearLayoutHorizontal)
 
@@ -56,8 +61,8 @@ class Board : AppCompatActivity() {
             }
         }
 
-        val boardId = intent.getStringExtra("BoardId")
-        getDataBoard(boardId!!.toInt())
+
+        getDataBoard(boardId)
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -76,6 +81,37 @@ class Board : AppCompatActivity() {
         return when (item.itemId) {
             R.id.board_menu_add -> {
                 startActivity(Intent(this, CreateColumn::class.java))
+                true
+            }
+            R.id.board_menu_Edit -> {
+                startActivity(Intent(this, CreateBoard::class.java).putExtra("BoardId", boardId.toString()))
+                true
+            }
+            R.id.board_menu_Delete -> {
+                    val builder = AlertDialog.Builder(this)
+                    builder.setMessage("Are you sure you want to Delete?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes") { dialog, id ->
+                            // Delete selected note from database
+                            val callback = request().deleteBoard(boardId)
+                            callback.enqueue(object : Callback<Void> {
+                                override fun onFailure(call: Call<Void>, t: Throwable) {
+                                    Log.d("deleteDataBoardFailuere", t.message.toString())
+                                }
+                                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                                    Log.d("deleteDataBoardCode", "Code: " + response.code())
+                                    onBackPressed()
+                                }
+                            })
+                        }
+                        .setNegativeButton("No") { dialog, id ->
+                            // Dismiss the dialog
+                            dialog.dismiss()
+                        }
+                    val alert = builder.create()
+                    alert.show()
+                    alert.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK)
+                    alert.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK)
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -97,7 +133,14 @@ class Board : AppCompatActivity() {
                     return
                 }
                 val boardTitle = findViewById<Toolbar>(R.id.BoardToolbar)
+                val bordBackground = findViewById<ImageView>(R.id.BoardScreenBackground)
                 boardTitle.title = response.body()!!.title
+                when(response.body()!!.background){
+                    "frutas" -> bordBackground.setImageResource(R.drawable.frutas)
+                    "florbranca" -> bordBackground.setImageResource(R.drawable.florbranca)
+                    "rosas" -> bordBackground.setImageResource(R.drawable.rosas)
+                    else -> bordBackground.setImageResource(R.drawable.palmeira2)
+                }
             }
         })
     }
@@ -180,5 +223,10 @@ class Board : AppCompatActivity() {
 //            }
 //        })
 //    }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this, Home::class.java))
+    }
+
 
 }
