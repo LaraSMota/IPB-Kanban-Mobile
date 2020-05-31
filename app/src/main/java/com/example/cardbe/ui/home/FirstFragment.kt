@@ -25,6 +25,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+//ACRESCENTAR BOTÃO DE ATUALIZAR
+
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
@@ -42,7 +44,6 @@ class FirstFragment : Fragment(), OnHomeItemListener {
         if (super.isResumed()){
             inflater.inflate(R.layout.activity_home, container, false).findViewById<FloatingActionButton>(R.id.fab).isVisible = true
         }
-//        setBoardsClickListener(myView)
 
         return myView
     }

@@ -1,5 +1,6 @@
 package com.example.cardbe
 
+import android.content.Intent
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
@@ -11,9 +12,13 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
 import com.example.cardbe.data.NetworkUtils
 import com.example.cardbe.data.model.UserModel
+import com.example.cardbe.ui.login.LoginActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
+//LER USUÁRIO DO USUARIO LOGADO
+//FAZER A TELA DESLOGAR
 
 class ChangePassword : AppCompatActivity() {
     var userId = 3
@@ -32,15 +37,64 @@ class ChangePassword : AppCompatActivity() {
         val confirmPassword = findViewById<EditText>(R.id.ChangePasswordConfirmNewPassword)
         val sendButton = findViewById<Button>(R.id.ChangePasswordSaveButton)
 
-        sendButton.setOnClickListener{
-            getDataUser()
-            newPassword.setText(newPassword.text.toString().replace(" ",""), TextView.BufferType.EDITABLE)
-            confirmPassword.setText(confirmPassword.text.toString().replace(" ",""), TextView.BufferType.EDITABLE)
-            if(passwordInput.text.toString() == password){
-                if(newPassword.text.toString() == confirmPassword.text.toString()){
-                    if(newPassword.text.toString().length > 6 && newPassword.text.toString().isNotBlank()){
+        val callbackGet = NetworkUtils.request().getUsers(userId)
+        callbackGet.enqueue(object : Callback<UserModel> {
+            override fun onFailure(call: Call<UserModel>, t: Throwable) {
+                Log.d("getDataUserFailuere", t.message.toString())
+            }
+
+            override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
+                if (!response.isSuccessful) {
+                    Log.d("getDataUserCode", "Code: " + response.code())
+                    return
+                }
+                val get = response.body()
+                firsName = get!!.firstName
+                lastName = get.lastName
+                email = get.email
+                nickname = get.nickname
+                password = get.password
+            }
+        })
+        sendButton.setOnClickListener {
+            newPassword.setText(
+                newPassword.text.toString().replace(" ", ""),
+                TextView.BufferType.EDITABLE
+            )
+            confirmPassword.setText(
+                confirmPassword.text.toString().replace(" ", ""),
+                TextView.BufferType.EDITABLE
+            )
+            if (passwordInput.text.toString() == password) {
+                if (newPassword.text.toString() == confirmPassword.text.toString()) {
+                    if (newPassword.text.toString().length > 6 && newPassword.text.toString()
+                            .isNotBlank()
+                    ) {
                         password = newPassword.text.toString()
-                        updateDataUser()
+                        val post = UserModel(null, firsName, lastName, email, nickname, password)
+                        val callbackPut = NetworkUtils.request().putUser(userId, post)
+
+                        callbackPut.enqueue(object : Callback<UserModel> {
+                            override fun onFailure(call: Call<UserModel>, t: Throwable) {
+                                Log.d("updateDataUserFailuere", t.message.toString())
+                            }
+
+                            override fun onResponse(
+                                call: Call<UserModel>,
+                                response: Response<UserModel>
+                            ) {
+                                if (!response.isSuccessful) {
+                                    Log.d("updateDataUserCode", "Code: " + response.code())
+                                    return
+                                }
+                                Toast.makeText(
+                                    applicationContext,
+                                    "Password saved",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                                finish()
+                            }
+                        })
                     } else {
                         Toast.makeText(
                             applicationContext,
@@ -65,71 +119,24 @@ class ChangePassword : AppCompatActivity() {
         }
 
         //Set back button and back button color
-        var toolbar = findViewById<Toolbar>(R.id.ChangePasswordToolbar)
+        val toolbar = findViewById<Toolbar>(R.id.ChangePasswordToolbar)
         setSupportActionBar(toolbar)
 
-        val myColorFilter = PorterDuffColorFilter(ResourcesCompat.getColor(resources, R.color.button, null), PorterDuff.Mode.MULTIPLY)
+        val myColorFilter = PorterDuffColorFilter(
+            ResourcesCompat.getColor(resources, R.color.button, null),
+            PorterDuff.Mode.MULTIPLY
+        )
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
         toolbar.children.forEach {
-            if (it is ImageButton){
+            if (it is ImageButton) {
                 it.drawable.colorFilter = myColorFilter
             }
         }
     }
-
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
-    }
-
-    fun updateDataUser(){
-        val post = UserModel(null, firsName, lastName, email, nickname, password)
-        val callback = NetworkUtils.request().putUser(userId, post)
-
-        callback.enqueue(object : Callback<UserModel> {
-            override fun onFailure(call: Call<UserModel>, t: Throwable) {
-                Log.d("updateDataUserFailuere", t.message.toString())
-            }
-
-            override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
-                if (!response.isSuccessful){
-                    Log.d("updateDataUserCode", "Code: " + response.code())
-                    return
-                }
-                Toast.makeText(
-                    applicationContext,
-                    "Password saved",
-                    Toast.LENGTH_LONG
-                ).show()
-                finish()
-            }
-        })
-    }
-
-    fun getDataUser() {
-        val callback = NetworkUtils.request().getUsers(userId)
-        callback.enqueue(object : Callback<UserModel> {
-            override fun onFailure(call: Call<UserModel>, t: Throwable) {
-                Log.d("getDataUserFailuere", t.message.toString())
-            }
-
-            override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
-                if (!response.isSuccessful){
-                    Log.d("getDataUserCode", "Code: " + response.code())
-                    return
-                }
-
-                var posts = response.body()
-                if (posts != null) {
-                    firsName = posts.firstName
-                    lastName = posts.lastName
-                    email = posts.email
-                    nickname = posts.nickname
-                    password = posts.password
-                }
-            }
-        })
     }
 }

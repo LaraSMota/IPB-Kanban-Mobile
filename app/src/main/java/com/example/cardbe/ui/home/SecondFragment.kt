@@ -9,6 +9,9 @@ import androidx.core.view.isVisible
 import com.example.cardbe.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
+//LISTAR DINAMICAMENTE OS TEAMS
+
+
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */

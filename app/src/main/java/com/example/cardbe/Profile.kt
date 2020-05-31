@@ -16,6 +16,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+//PEGAR O ID DO USUARIO LOGADO
+//IMPLEMENTAR O ENVIAR FOTO DO USUARIO
 
 class Profile : AppCompatActivity() {
     val userId = 3

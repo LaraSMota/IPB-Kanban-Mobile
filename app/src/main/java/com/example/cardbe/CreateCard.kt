@@ -16,6 +16,12 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+//IMPLEMENTAR O ADICIONAR DOCUMENTOS
+//ADICIONAR O CHECKLIST
+//ADICIONAR LABELS
+//ADICIONAR DUE DATE
+//ADICIONAR MEMBERS
+
 class CreateCard : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

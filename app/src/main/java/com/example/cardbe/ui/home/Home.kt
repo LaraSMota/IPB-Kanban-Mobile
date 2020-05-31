@@ -51,8 +51,8 @@ class Home : AppCompatActivity() {
             }
             if (tabs.selectedTabPosition == 2){
                 findViewById<FloatingActionButton>(R.id.fab).hide()
-                }
             }
+        }
 
 //        val pullToRefresh = findViewById<SwipeRefreshLayout>(R.id.pullToRefresh);
 //        pullToRefresh.setOnRefreshListener {
@@ -62,7 +62,7 @@ class Home : AppCompatActivity() {
     }
 
     fun refreshData(){
-        
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -71,5 +71,3 @@ class Home : AppCompatActivity() {
 
     }
 }
-
-

@@ -10,6 +10,8 @@ import com.example.cardbe.R
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
+//LISTAR OS CARDS DINAMICAMENTE
+
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */

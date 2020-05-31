@@ -25,8 +25,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-//ACRESCENTAR BOTÃO DE ATUALIZAR
-//ATUALIZAR TELA QUANDO VOLTAR DE OUTRA ACTIVITY
 //GERAR O CONTEUDO DINAMICAMENTE
 
 

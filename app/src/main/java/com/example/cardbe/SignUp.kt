@@ -13,11 +13,11 @@ import kotlinx.android.synthetic.main.activity_forgotpassword.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 //PRECISA TRATAR PARA:
 //NÃO ADIMITIR DUAS CONTAS COM O MESMO EMAIL
 //CRIPTOGRAFAR SENHA
 //NÃO ADMITIR NUMEROS NO FIRST E LASTNAME
-
 
 class SignUp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
