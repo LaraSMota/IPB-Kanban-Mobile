@@ -13,6 +13,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat.*
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.ItemTouchHelper.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cardbe.Board
@@ -28,6 +31,7 @@ import kotlinx.android.synthetic.main.home_item.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 class CollumnAdapter(private val collumnList: List<CollumnItem>, private val clickListener: OnCollumnItemListener, private val contexto: Context) : RecyclerView.Adapter <CollumnAdapter.CollumnViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollumnViewHolder {
@@ -63,6 +67,10 @@ class CollumnAdapter(private val collumnList: List<CollumnItem>, private val cli
             }
         }
     }
+    fun swapItems(fromPosition: Int, toPosition: Int) {
+        Collections.swap(collumnList, fromPosition, toPosition)
+        notifyItemMoved(fromPosition, toPosition)
+    }
 }
 
 interface OnCollumnItemListener{
@@ -92,9 +100,15 @@ fun getCardData(collumnId: Int?, recyclerview: RecyclerView, contexto: Context){
     })
 }
 
-fun showDataCardData(card: List<CardItem>, recyclerview: RecyclerView, contexto: Context){
+fun showDataCardData(card: MutableList<CardItem>, recyclerview: RecyclerView, contexto: Context){
     recyclerview.adapter = CardAdapter(card)
     recyclerview.layoutManager = LinearLayoutManager(contexto, LinearLayoutManager.VERTICAL, false)
     recyclerview.setHasFixedSize(true)
+
+    val dividerItemDecoration = DividerItemDecoration(contexto , DividerItemDecoration.VERTICAL)
+    recyclerview.addItemDecoration(dividerItemDecoration)
+    val callback = DragManageAdapterCard(CardAdapter(card), contexto, ItemTouchHelper.UP.or(ItemTouchHelper.DOWN), 0)
+    val helper = ItemTouchHelper(callback)
+    helper.attachToRecyclerView(recyclerview)
 }
 

@@ -143,16 +143,23 @@ class DialogDeleteCollumnDealer : AppCompatActivity() {
                                 })
                                 //-------------------FIM DO DELETAR BOARD--------------------
                             }
-
                         })
-
                     }
                 }
+                //------------------DELETAR O PROPRIO BOARD--------------------
+                val callback5 = NetworkUtils.request().deleteBoard(boardId)
+                callback5.enqueue(object : Callback<Void> {
+                    override fun onFailure(call: Call<Void>, t: Throwable) {
+                        Log.d("deleteDataBoardFailuere", t.message.toString())
+                    }
+                    override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                        Log.d("deleteDataBoardCode", "Code: " + response.code())
+                        onBackPressed()
+                    }
+                })
+                //-------------------FIM DO DELETAR BOARD--------------------
             }
         })
-
-
-
     }
 
     fun deleteCollumn(){

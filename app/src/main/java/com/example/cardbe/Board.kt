@@ -19,15 +19,15 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cardbe.data.NetworkUtils
 import com.example.cardbe.data.NetworkUtils.Companion.request
 import com.example.cardbe.data.model.BoardModel
 import com.example.cardbe.data.model.CardModel
 import com.example.cardbe.data.model.CollumnModel
-import com.example.cardbe.recyclerView.CollumnItem
-import com.example.cardbe.recyclerView.DialogDeleteCollumnDealer
-import com.example.cardbe.recyclerView.HomeItem
+import com.example.cardbe.recyclerView.*
 import com.example.cardbe.ui.home.Home
 import com.example.recyclerviewexample.CollumnAdapter
 import com.example.recyclerviewexample.HomeAdapter
@@ -203,6 +203,14 @@ class Board : AppCompatActivity(), OnCollumnItemListener {
         board_recycler_view.adapter = CollumnAdapter(collumn, this, applicationContext)
         board_recycler_view.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         board_recycler_view.setHasFixedSize(true)
+
+        val dividerItemDecoration = DividerItemDecoration(this , DividerItemDecoration.VERTICAL)
+        board_recycler_view.addItemDecoration(dividerItemDecoration)
+        val callback = DragManageAdapter(
+            CollumnAdapter(collumn, this, applicationContext), this, ItemTouchHelper.RIGHT.or(
+                ItemTouchHelper.LEFT), 0)
+        val helper = ItemTouchHelper(callback)
+        helper.attachToRecyclerView(board_recycler_view)
     }
 
     override fun onItemClick(item: CollumnItem, position: Int) {

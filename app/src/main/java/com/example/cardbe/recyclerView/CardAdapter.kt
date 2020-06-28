@@ -14,8 +14,9 @@ import com.example.cardbe.ui.home.FirstFragment
 import com.example.cardbe.ui.home.SecondFragment
 import com.example.cardbe.ui.home.ThirdFragment
 import kotlinx.android.synthetic.main.card_item.view.*
+import java.util.*
 
-class CardAdapter(private val cardList: List<CardItem>) : RecyclerView.Adapter <CardAdapter.CardViewHolder>() {
+class CardAdapter(private val cardList: MutableList<CardItem>) : RecyclerView.Adapter <CardAdapter.CardViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val cardView = LayoutInflater.from(parent.context).inflate(
@@ -66,5 +67,14 @@ class CardAdapter(private val cardList: List<CardItem>) : RecyclerView.Adapter <
                 //action.onItemClick(item, adapterPosition)
             }
         }
+    }
+
+    /**
+     * Function called to swap dragged items
+     */
+    fun swapItems(fromPosition: Int, toPosition: Int) {
+        cardList[fromPosition] = cardList[toPosition].also { cardList[toPosition] = cardList[fromPosition]}
+        //Collections.swap(cardList, fromPosition, toPosition)
+        notifyItemMoved(fromPosition, toPosition)
     }
 }
