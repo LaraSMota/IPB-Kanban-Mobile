@@ -74,7 +74,7 @@ class CreateBoard : AppCompatActivity() {
                 } else {
                     postDataBoard(this, title.text.toString(), description.text.toString(), background.transitionName.toString())
                 }
-
+                onBackPressed()
             } else {
                 Toast.makeText(
                     applicationContext,
@@ -88,7 +88,8 @@ class CreateBoard : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         if(isToUpdate){
-            finish()
+            val boardId = intent.getStringExtra("BoardId")!!.toInt()
+            startActivity(Intent(this, Board::class.java).putExtra("BoardId", boardId.toString()))
         } else {
             startActivity(Intent(this, Home::class.java))
         }
@@ -100,7 +101,7 @@ class CreateBoard : AppCompatActivity() {
     }
 
     fun postDataBoard(contexto : Context, title: String, description: String?, background: String){
-        val post = BoardModel(null, title, description, background)
+        val post = BoardModel(null, title, description, background, null)
         val callback = NetworkUtils.request().postBoard(post)
 
         callback.enqueue(object : Callback<BoardModel> {
@@ -113,14 +114,13 @@ class CreateBoard : AppCompatActivity() {
                     Log.d("postDataBoardCode", "Code: " + response.code())
                     return
                 }
-                onBackPressed()
             }
         })
     }
 
     fun updateDataBoard(contexto : Context, title: String, description: String?, background: String){
-        val post = BoardModel(null, title, description, background)
         val boardId = intent.getStringExtra("BoardId")!!.toInt()
+        val post = BoardModel(boardId, title, description, background, null)
         val callback = NetworkUtils.request().putBoard(boardId, post)
 
         callback.enqueue(object : Callback<BoardModel> {
@@ -133,7 +133,6 @@ class CreateBoard : AppCompatActivity() {
                     Log.d("postDataBoardCode", "Code: " + response.code())
                     return
                 }
-                onBackPressed()
             }
         })
     }

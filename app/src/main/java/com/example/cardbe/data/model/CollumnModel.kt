@@ -4,7 +4,9 @@ data class CollumnModel(
 
     val collumnId : Int?,
 
-    val title : String,
+    val title : String?,
 
-    val boardId : Int
+    val boardId : Int?,
+
+    val position : Int?
 )

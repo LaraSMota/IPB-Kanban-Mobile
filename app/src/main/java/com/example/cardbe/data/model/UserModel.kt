@@ -12,5 +12,9 @@ data class UserModel(
 
     val nickname : String,
 
-    val password : String
+    val password : String,
+
+    val picture : String?,
+
+    val beNotified : String?
 )

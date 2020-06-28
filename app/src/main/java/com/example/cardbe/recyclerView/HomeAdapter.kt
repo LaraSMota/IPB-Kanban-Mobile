@@ -29,7 +29,6 @@ class HomeAdapter(private val boardList: List<HomeItem>, private val clickListen
     class HomeViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
         var recyclerBackground: ImageView = itemView.image_view_rose
         var recyclerTitle: TextView = itemView.text_view_mc
-        var recyclerShareIcon: ImageView = itemView.ProjectsCard1ShareImage
 
         fun initialize(item: HomeItem, action:OnHomeItemListener){
             when(item.background){
@@ -39,7 +38,6 @@ class HomeAdapter(private val boardList: List<HomeItem>, private val clickListen
                 else -> recyclerBackground.setImageResource(R.drawable.palmeira2)
             }
             recyclerTitle.text = item.title
-            recyclerShareIcon.setImageResource(R.drawable.ic_share_black_24dp)
 
             itemView.setOnClickListener{
                 action.onItemClick(item, adapterPosition)

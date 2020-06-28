@@ -91,7 +91,7 @@ class SignUp : AppCompatActivity() {
     }
 
     fun postDataUser(fistName: String, lastName: String, email: String, nickname: String, password: String){
-        val post = UserModel(null, fistName, lastName, email, nickname, password)
+        val post = UserModel(null, fistName, lastName, email, nickname, password, null, "true")
         val callback = NetworkUtils.request().postUser(post)
 
         callback.enqueue(object : Callback<UserModel> {

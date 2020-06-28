@@ -1,6 +1,7 @@
 package com.example.cardbe
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import androidx.appcompat.app.AppCompatActivity
@@ -50,7 +51,8 @@ class CreateColumn : AppCompatActivity() {
         }
         saveButton.setOnClickListener{
             if(title.text.toString().isNotBlank()){
-                postDataCollumn(title.text.toString(), (1 until 100).random())
+                val boardId = intent.getStringExtra("BoardId")!!.toInt()
+                postDataCollumn(title.text.toString(), boardId)
             } else {
                 Toast.makeText(
                     applicationContext,
@@ -65,8 +67,14 @@ class CreateColumn : AppCompatActivity() {
         return true
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val boardId = intent.getStringExtra("BoardId")!!.toInt()
+        startActivity(Intent(this, Board::class.java).putExtra("BoardId", boardId.toString()))
+    }
+
     fun postDataCollumn(title: String, boardId: Int){
-        val post = CollumnModel(null, title, boardId)
+        val post = CollumnModel(null, title, boardId, 0)
         val callback = NetworkUtils.request().postCollumn(post)
 
         callback.enqueue(object : Callback<CollumnModel> {
@@ -79,7 +87,7 @@ class CreateColumn : AppCompatActivity() {
                     Log.d("postDataCollumnode", "Code: " + response.code())
                     return
                 }
-                finish()
+                onBackPressed()
             }
         })
     }

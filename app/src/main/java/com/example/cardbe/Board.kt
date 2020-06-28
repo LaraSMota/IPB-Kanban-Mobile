@@ -16,14 +16,24 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cardbe.data.NetworkUtils
 import com.example.cardbe.data.NetworkUtils.Companion.request
 import com.example.cardbe.data.model.BoardModel
 import com.example.cardbe.data.model.CardModel
 import com.example.cardbe.data.model.CollumnModel
+import com.example.cardbe.recyclerView.CollumnItem
+import com.example.cardbe.recyclerView.DialogDeleteCollumnDealer
+import com.example.cardbe.recyclerView.HomeItem
 import com.example.cardbe.ui.home.Home
+import com.example.recyclerviewexample.CollumnAdapter
+import com.example.recyclerviewexample.HomeAdapter
+import com.example.recyclerviewexample.OnCollumnItemListener
+import kotlinx.android.synthetic.main.activity_board.*
+import kotlinx.android.synthetic.main.fragment_first.*
 import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
@@ -32,13 +42,13 @@ import retrofit2.Response
 //GERAR O CONTEUDO DINAMICAMENTE
 
 
-class Board : AppCompatActivity() {
+class Board : AppCompatActivity(), OnCollumnItemListener {
     var boardId = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         boardId = intent.getStringExtra("BoardId")!!.toInt()
         setContentView(R.layout.activity_board)
-        val linearLayout = findViewById<LinearLayout>(R.id.BoardLinearLayoutHorizontal)
+        //val linearLayout = findViewById<LinearLayout>(R.id.BoardLinearLayoutHorizontal)
 
         //Set back button and back button color
         var toolbar = findViewById<Toolbar>(R.id.BoardToolbar)
@@ -53,16 +63,8 @@ class Board : AppCompatActivity() {
                 it.drawable.colorFilter = myColorFilter
             }
         }
-
-        linearLayout.children.forEach {
-            val linerLayoutVertical = it as LinearLayout
-            linerLayoutVertical.getChildAt(1).setOnClickListener{
-                startActivity(Intent(this, CreateCard::class.java))
-            }
-        }
-
-
         getDataBoard(boardId)
+        getDataCollumn()
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -80,7 +82,7 @@ class Board : AppCompatActivity() {
         // Handle item selection
         return when (item.itemId) {
             R.id.board_menu_add -> {
-                startActivity(Intent(this, CreateColumn::class.java))
+                startActivity(Intent(this, CreateColumn::class.java).putExtra("BoardId", boardId.toString()))
                 true
             }
             R.id.board_menu_Edit -> {
@@ -88,30 +90,12 @@ class Board : AppCompatActivity() {
                 true
             }
             R.id.board_menu_Delete -> {
-                    val builder = AlertDialog.Builder(this)
-                    builder.setMessage("Are you sure you want to Delete?")
-                        .setCancelable(false)
-                        .setPositiveButton("Yes") { dialog, id ->
-                            // Delete selected note from database
-                            val callback = request().deleteBoard(boardId)
-                            callback.enqueue(object : Callback<Void> {
-                                override fun onFailure(call: Call<Void>, t: Throwable) {
-                                    Log.d("deleteDataBoardFailuere", t.message.toString())
-                                }
-                                override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                                    Log.d("deleteDataBoardCode", "Code: " + response.code())
-                                    onBackPressed()
-                                }
-                            })
-                        }
-                        .setNegativeButton("No") { dialog, id ->
-                            // Dismiss the dialog
-                            dialog.dismiss()
-                        }
-                    val alert = builder.create()
-                    alert.show()
-                    alert.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK)
-                    alert.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK)
+                val myIntent = Intent(this, DialogDeleteCollumnDealer::class.java)
+                    .putExtra("BoardId", boardId.toString())
+                    .putExtra("CollumnId", "0")
+                    .putExtra("From", "Board")
+                myIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                ContextCompat.startActivity(this, myIntent, null)
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -119,7 +103,6 @@ class Board : AppCompatActivity() {
     }
 
     fun getDataBoard(boardId: Int) {
-        val text = findViewById<TextView>(R.id.BoardScreenCollumn1Card1Title)
         val callback = request().getBoard(boardId)
 
         callback.enqueue(object : Callback<BoardModel> {
@@ -146,7 +129,7 @@ class Board : AppCompatActivity() {
     }
 
     fun deleteDataBoard(){
-        val text = findViewById<TextView>(R.id.BoardScreenCollumn1Card1Title)
+        //val text = findViewById<TextView>(R.id.BoardScreenCollumn1Card1Title)
         val callback = request().deleteBoard(5)
 
         callback.enqueue(object : Callback<Void> {
@@ -161,8 +144,8 @@ class Board : AppCompatActivity() {
     }
 
     fun updateDataBoard(){
-        val text = findViewById<TextView>(R.id.BoardScreenCollumn1Card1Title)
-        val post = BoardModel(null, "new Title", "new Description", null)
+        //val text = findViewById<TextView>(R.id.BoardScreenCollumn1Card1Title)
+        val post = BoardModel(null, "new Title", "new Description", null, null)
         val callback = request().putBoard(5, post)
 
         callback.enqueue(object : Callback<BoardModel> {
@@ -184,49 +167,47 @@ class Board : AppCompatActivity() {
                 content += "Title: " + (postResponse?.title ?: "empty") + "\n"
                 content += "Body: " + (postResponse?.description ?: "empty") + "\n\n"
 
-                text.append(content)
+                //text.append(content)
             }
         })
     }
 
-//    fun getDataCollumn() {
-//        val callback = request().getCollumns(nu)
-//
-//        callback.enqueue(object : Callback<List<CollumnModel>> {
-//            override fun onFailure(call: Call<List<CollumnModel>>, t: Throwable) {
-//                Log.d("getDataCollumnFailuere", t.message.toString())
-//            }
-//
-//            override fun onResponse(call: Call<List<CollumnModel>>, response: Response<List<CollumnModel>>) {
-//                if (!response.isSuccessful){
-//                    Log.d("getDataCollumnCode", "Code: " + response.code())
-//                    return
-//                }
-//            }
-//        })
-//    }
-
-//    fun getDataCard() {
-//        val text = findViewById<TextView>(R.id.BoardScreenCollumn1Card1Title)
-//        val callback = request().getCards()
-//
-//        callback.enqueue(object : Callback<List<CardModel>> {
-//            override fun onFailure(call: Call<List<CardModel>>, t: Throwable) {
-//                Log.d("getDataBoardFailuere", t.message.toString())
-//            }
-//
-//            override fun onResponse(call: Call<List<CardModel>>, response: Response<List<CardModel>>) {
-//                if (!response.isSuccessful){
-//                    Log.d("getDataBoardCode", "Code: " + response.code())
-//                    return
-//                }
-//            }
-//        })
-//    }
     override fun onBackPressed() {
         super.onBackPressed()
         startActivity(Intent(this, Home::class.java))
     }
 
+    fun getDataCollumn() {
+        val callback = NetworkUtils.request().getCollumnToRecyclerView()
+        callback.enqueue(object : Callback<List<CollumnItem>> {
+            override fun onFailure(call: Call<List<CollumnItem>>, t: Throwable) {
+                Log.d("getDataBoardFailuere", t.message.toString())
+            }
 
+            override fun onResponse(call: Call<List<CollumnItem>>, response: Response<List<CollumnItem>>) {
+                if (!response.isSuccessful){
+                    Log.d("getDataBoardCode", "Code: " + response.code())
+                    return
+                }
+                var collumnList: MutableList<CollumnItem> = mutableListOf()
+                response.body()!!.forEach(){
+                    if(it.boardId!!.toInt() == boardId){
+                        collumnList.add(it)
+                    }
+                }
+                showData(collumnList)
+            }
+        })
+    }
+    fun showData(collumn: List<CollumnItem>){
+        board_recycler_view.adapter = CollumnAdapter(collumn, this, applicationContext)
+        board_recycler_view.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        board_recycler_view.setHasFixedSize(true)
+    }
+
+    override fun onItemClick(item: CollumnItem, position: Int) {
+        startActivity(Intent(this, CreateCard::class.java)
+            .putExtra("CollumnId", item.collumnId.toString())
+            .putExtra("BoardId", boardId.toString()))
+    }
 }

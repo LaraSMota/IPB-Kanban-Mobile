@@ -1,10 +1,10 @@
-package com.example.cardbe.data.model
+package com.example.cardbe.recyclerView
 
-data class CardModel(
+data class CardItem (
 
     val cardId : Int?,
 
-    val title : String?,
+    val title : String,
 
     val comments : String?,
 
@@ -18,7 +18,5 @@ data class CardModel(
 
     val checklist : String?,
 
-    val collumnId : Int?,
-
-    val position : Int?
+    val collumnId : Int
 )

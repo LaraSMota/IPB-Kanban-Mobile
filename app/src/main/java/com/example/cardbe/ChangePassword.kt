@@ -71,7 +71,7 @@ class ChangePassword : AppCompatActivity() {
                             .isNotBlank()
                     ) {
                         password = newPassword.text.toString()
-                        val post = UserModel(null, firsName, lastName, email, nickname, password)
+                        val post = UserModel(null, firsName, lastName, email, nickname, password, null, "true")
                         val callbackPut = NetworkUtils.request().putUser(userId, post)
 
                         callbackPut.enqueue(object : Callback<UserModel> {

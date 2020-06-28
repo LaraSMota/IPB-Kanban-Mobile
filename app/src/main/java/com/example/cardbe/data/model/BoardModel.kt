@@ -8,5 +8,8 @@ data class BoardModel(
 
     val description : String?,
 
-    val background : String?
+    val background : String?,
+
+    val teamId: Int?
+
 )

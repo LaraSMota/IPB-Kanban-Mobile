@@ -1,10 +1,15 @@
 package com.example.cardbe
 
+import android.Manifest
+import android.app.Activity
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.view.Window
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -12,9 +17,16 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
 import com.example.cardbe.data.NetworkUtils
 import com.example.cardbe.data.model.UserModel
+import kotlinx.android.synthetic.main.activity_profilescreen.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.File
+import java.io.IOException
+
 
 //PEGAR O ID DO USUARIO LOGADO
 //IMPLEMENTAR O ENVIAR FOTO DO USUARIO
@@ -22,6 +34,7 @@ import retrofit2.Response
 class Profile : AppCompatActivity() {
     val userId = 3
     var password = ""
+    private var imageData: ByteArray? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,6 +97,27 @@ class Profile : AppCompatActivity() {
             }
         }
 
+        EditProfileProfileImage.setOnClickListener {
+            //check runtime permission
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                    PackageManager.PERMISSION_DENIED){
+                    //permission denied
+                    val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
+                    //show popup to request runtime permission
+                    requestPermissions(permissions, PERMISSION_CODE);
+                }
+                else{
+                    //permission already granted
+                    pickImageFromGallery();
+                }
+            }
+            else{
+                //system OS is < Marshmallow
+                pickImageFromGallery();
+            }
+        }
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -115,21 +149,57 @@ class Profile : AppCompatActivity() {
     }
 
     fun updateDataUser(firstName: String, lastName: String, email: String, nickname: String){
-        val body = UserModel(null, firstName, lastName, email, nickname, password)
-        val callback = NetworkUtils.request().putUser(userId, body)
 
-        callback.enqueue(object : Callback<UserModel> {
-            override fun onFailure(call: Call<UserModel>, t: Throwable) {
-                Log.d("updateDataUserFailuere", t.message.toString())
-            }
+    }
 
-            override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
-                if (!response.isSuccessful){
-                    Log.d("updateDataUserCode", "Code: " + response.code())
-                    return
+    private fun pickImageFromGallery() {
+        //Intent to pick image
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, IMAGE_PICK_CODE)
+    }
+
+    companion object {
+        //image pick code
+        private val IMAGE_PICK_CODE = 1000;
+        //Permission code
+        private val PERMISSION_CODE = 1001;
+    }
+
+    //handle requested permission result
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        when(requestCode){
+            PERMISSION_CODE -> {
+                if (grantResults.size >0 && grantResults[0] ==
+                    PackageManager.PERMISSION_GRANTED){
+                    //permission from popup granted
+                    pickImageFromGallery()
                 }
-                finish()
+                else{
+                    //permission from popup denied
+                    Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+                }
             }
-        })
+        }
+    }
+
+    @Throws(IOException::class)
+    private fun createImageData(uri: Uri) {
+        val inputStream = contentResolver.openInputStream(uri)
+        inputStream?.buffered()?.use {
+            imageData = it.readBytes()
+        }
+    }
+
+    //handle result of picked image
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE){
+            val uri = data?.data
+            if (uri != null) {
+                EditProfileProfileImage.setImageURI(uri)
+                createImageData(uri)
+            }
+        }
     }
 }

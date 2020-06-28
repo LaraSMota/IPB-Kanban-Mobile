@@ -36,14 +36,6 @@
                 android:textSize="20sp"
                 android:text="Master Degree"/>
 
-            <ImageView
-                android:id="@+id/ProjectsCard1ShareImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right|center_vertical"
-                android:layout_margin="10dp"
-                android:src="@drawable/ic_share_black_24dp" />
-
         </androidx.cardview.widget.CardView>
 
 

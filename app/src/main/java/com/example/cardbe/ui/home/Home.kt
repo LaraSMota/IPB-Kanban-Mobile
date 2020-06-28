@@ -32,7 +32,7 @@ class Home : AppCompatActivity() {
         }
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
-            startActivity(Intent(this, CreateBoard::class.java))
+            startActivity(Intent(this, CreateBoard::class.java).putExtra("BoardId", "CREATE"))
         }
 
         viewPager.viewTreeObserver.addOnScrollChangedListener {

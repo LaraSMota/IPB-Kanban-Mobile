@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cardbe">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:theme="@style/cardBeTheme"
@@ -48,7 +49,13 @@
         <activity
             android:name=".Board"
             android:label="Board"
-            android:theme="@style/cardBeTheme.NoActionBar" />
+            android:theme="@style/cardBeTheme.NoActionBar"
+            android:noHistory="true"/>
+        <activity
+            android:name=".recyclerView.DialogDeleteCollumnDealer"
+            android:label="DialogDeleteCollumn"
+            android:theme="@style/cardBeTheme.NoActionBar"
+            android:noHistory="true"/>
         <activity
             android:name=".ChangePassword"
             android:label="Change Password"
