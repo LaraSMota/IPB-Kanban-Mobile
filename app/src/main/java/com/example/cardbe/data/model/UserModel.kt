@@ -2,7 +2,7 @@ package com.example.cardbe.data.model
 
 data class UserModel(
 
-    val userId : Int?,
+    val usersId : Int?,
 
     val firstName : String,
 

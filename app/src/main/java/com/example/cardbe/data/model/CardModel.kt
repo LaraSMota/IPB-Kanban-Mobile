@@ -10,7 +10,7 @@ data class CardModel(
 
     val attachments : String?,
 
-    val labels : String?,
+    val lables : String?,
 
     val dueDate : String?,
 

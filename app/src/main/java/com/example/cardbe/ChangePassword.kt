@@ -65,13 +65,13 @@ class ChangePassword : AppCompatActivity() {
                 confirmPassword.text.toString().replace(" ", ""),
                 TextView.BufferType.EDITABLE
             )
-            if (passwordInput.text.toString() == password) {
+            val test = passwordInput.text.toString()
+            val test2 = password
+            if (passwordInput.text.toString() == password.toString()) {
                 if (newPassword.text.toString() == confirmPassword.text.toString()) {
-                    if (newPassword.text.toString().length > 6 && newPassword.text.toString()
-                            .isNotBlank()
-                    ) {
+                    if (newPassword.text.toString().length > 6 && newPassword.text.toString().isNotBlank()) {
                         password = newPassword.text.toString()
-                        val post = UserModel(null, firsName, lastName, email, nickname, password, null, "true")
+                        val post = UserModel(userId, firsName, lastName, email, nickname, password, null, "true")
                         val callbackPut = NetworkUtils.request().putUser(userId, post)
 
                         callbackPut.enqueue(object : Callback<UserModel> {

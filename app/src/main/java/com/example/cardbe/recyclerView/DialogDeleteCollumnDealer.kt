@@ -30,13 +30,19 @@ import retrofit2.Response
 class DialogDeleteCollumnDealer : AppCompatActivity() {
     var collumnId = 0
     var boardId = 0
+    var myCardId = 0
     var from = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        collumnId = intent.getStringExtra("CollumnId")!!.toInt()
-        boardId = intent.getStringExtra("BoardId")!!.toInt()
+
         from = intent.getStringExtra("From")!!.toString()
+        if(from == "Card"){
+            myCardId = intent.getStringExtra("CardId")!!.toInt()
+        }else{
+            collumnId = intent.getStringExtra("CollumnId")!!.toInt()
+            boardId = intent.getStringExtra("BoardId")!!.toInt()
+        }
 
         val builder = AlertDialog.Builder(this)
         builder.setMessage("Are you sure you want to Delete?")
@@ -47,6 +53,9 @@ class DialogDeleteCollumnDealer : AppCompatActivity() {
                 }
                 if(from == "Board"){
                     deleteBoard()
+                }
+                if(from == "Card"){
+                    deleteCard()
                 }
             }
             .setNegativeButton("No") { dialog, id ->
@@ -72,6 +81,9 @@ class DialogDeleteCollumnDealer : AppCompatActivity() {
             val myIntent = Intent(applicationContext, Home::class.java)
             myIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             ContextCompat.startActivity(applicationContext, myIntent, null)
+        }
+        if(from == "Card"){
+            getBoard()
         }
 
     }
@@ -199,6 +211,56 @@ class DialogDeleteCollumnDealer : AppCompatActivity() {
                         }
                     }
                 })
+            }
+        })
+    }
+    fun deleteCard(){
+
+        val callback = NetworkUtils.request().deleteCard(myCardId.toInt())
+        callback.enqueue(object : Callback<Void> {
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                Log.d("deleteDataBoardFailuere", t.message.toString())
+            }
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                Log.d("deleteDataBoardCode", "Code: " + response.code())
+                if(from == "Collumn"){
+                    onBackPressed()
+                }
+            }
+        })
+    }
+
+    fun getBoard(){
+        val callback2 = NetworkUtils.request().getCard(myCardId)
+        callback2.enqueue(object : Callback<CardModel> {
+            override fun onFailure(call: Call<CardModel>, t: Throwable) {
+                Log.d("getDataBoardFailuere", t.message.toString())
+            }
+
+            override fun onResponse(call: Call<CardModel>, response: Response<CardModel>) {
+                if (!response.isSuccessful){
+                    Log.d("getDataBoardCode", "Code: " + response.code())
+                    return
+                    }
+                    collumnId = response.body()!!.collumnId!!.toInt()
+                    val callback3 = NetworkUtils.request().getCollumn(collumnId)
+                    callback3.enqueue(object : Callback<CollumnModel> {
+                        override fun onFailure(call: Call<CollumnModel>, t: Throwable) {
+                            Log.d("getDataBoardFailuere", t.message.toString())
+                        }
+
+                        override fun onResponse(call: Call<CollumnModel>, response: Response<CollumnModel>) {
+                            if (!response.isSuccessful){
+                                Log.d("getDataBoardCode", "Code: " + response.code())
+                                return
+                            }
+                            boardId = response.body()!!.boardId!!.toInt()
+                            val myIntent = Intent(applicationContext, Board::class.java)
+                                .putExtra("BoardId", boardId.toString())
+                            myIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                            ContextCompat.startActivity(applicationContext, myIntent, null)
+                    }
+                 })
             }
         })
     }

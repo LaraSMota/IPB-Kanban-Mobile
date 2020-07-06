@@ -13,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.cardview.widget.CardView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
 import com.example.cardbe.data.NetworkUtils
@@ -35,6 +36,7 @@ import javax.xml.datatype.DatatypeConstants.MONTHS
 class CreateCard : AppCompatActivity() {
     var collumnId = 0
     var boardId = "0"
+    var labels = "X"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -50,9 +52,13 @@ class CreateCard : AppCompatActivity() {
         val checklist = findViewById<TextView>(R.id.CreateCardAddChecklist)
         val label = findViewById<TextView>(R.id.CreateCardAddLabels)
         val dueDate = findViewById<TextView>(R.id.CreateCardAddDueDate)
-        val members = findViewById<TextView>(R.id.CreateCardAddMembers)
         val comments = findViewById<TextView>(R.id.CreateCardComment)
         val saveButton = findViewById<Button>(R.id.CreateCardSave)
+        val azul = findViewById<CardView>(R.id.azul)
+        val amarelo = findViewById<CardView>(R.id.amarelo)
+        val verde = findViewById<CardView>(R.id.verde)
+        val vermelho = findViewById<CardView>(R.id.vermelho)
+        val blank = findViewById<CardView>(R.id.blank)
         var date: String = ""
         setSupportActionBar(toolbar)
         val myColorFilter = PorterDuffColorFilter(ResourcesCompat.getColor(resources, R.color.button, null), PorterDuff.Mode.MULTIPLY)
@@ -78,6 +84,47 @@ class CreateCard : AppCompatActivity() {
                 }, year, month, day
             )
             dpd.show()
+        }
+
+        azul.setOnClickListener{
+            labels = "azul"
+            azul.setAlpha(1.0f)
+            amarelo.setAlpha(0.5f)
+            vermelho.setAlpha(0.5f)
+            verde.setAlpha(0.5f)
+            blank.setAlpha(0.5f)
+        }
+        amarelo.setOnClickListener{
+            labels = "amarelo"
+            azul.setAlpha(0.5f)
+            amarelo.setAlpha(1.0f)
+            vermelho.setAlpha(0.5f)
+            verde.setAlpha(0.5f)
+            blank.setAlpha(0.5f)
+        }
+        vermelho.setOnClickListener{
+            labels = "vermelho"
+            azul.setAlpha(0.5f)
+            amarelo.setAlpha(0.5f)
+            vermelho.setAlpha(1.0f)
+            verde.setAlpha(0.5f)
+            blank.setAlpha(0.5f)
+        }
+        verde.setOnClickListener{
+            labels = "verde"
+            azul.setAlpha(0.5f)
+            amarelo.setAlpha(0.5f)
+            vermelho.setAlpha(0.5f)
+            verde.setAlpha(1.0f)
+            blank.setAlpha(0.5f)
+        }
+        blank.setOnClickListener{
+            labels = "X"
+            azul.setAlpha(0.5f)
+            amarelo.setAlpha(0.5f)
+            vermelho.setAlpha(0.5f)
+            verde.setAlpha(0.5f)
+            blank.setAlpha(1.0f)
         }
 
         saveButton.setOnClickListener{
@@ -108,7 +155,7 @@ class CreateCard : AppCompatActivity() {
             title,
             comments,
             null,
-            null,
+            labels,
             null,
             description,
             null,

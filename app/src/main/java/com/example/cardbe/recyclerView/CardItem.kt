@@ -10,7 +10,7 @@ data class CardItem (
 
     val attachments : String?,
 
-    val labels : String?,
+    val lables : String?,
 
     val dueDate : String?,
 

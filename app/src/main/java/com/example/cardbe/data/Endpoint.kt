@@ -42,6 +42,9 @@ interface Endpoint {
     @GET("Cards")
     fun getCards() : Call<List<CardModel>>
 
+    @GET("Cards/{id}")
+    fun getCard(@Path("id") boardId : Int) : Call<CardModel>
+
     @POST("Cards")
     fun postCard(@Body post: CardModel) : Call<CardModel>
 
@@ -55,6 +58,9 @@ interface Endpoint {
 // ----------------------------- COLLUMN METHODS-----------------------------
     @GET("Collumns")
     fun getCollumnToRecyclerView() : Call<List<CollumnItem>>
+
+    @GET("Collumns/{id}")
+    fun getCollumn(@Path("id") boardId : Int) : Call<CollumnModel>
 
     @GET("Collumns")
     fun getCollums() : Call<List<CollumnModel>>

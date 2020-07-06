@@ -101,13 +101,13 @@ fun getCardData(collumnId: Int?, recyclerview: RecyclerView, contexto: Context){
 }
 
 fun showDataCardData(card: MutableList<CardItem>, recyclerview: RecyclerView, contexto: Context){
-    recyclerview.adapter = CardAdapter(card)
+    recyclerview.adapter = CardAdapter(card, contexto)
     recyclerview.layoutManager = LinearLayoutManager(contexto, LinearLayoutManager.VERTICAL, false)
     recyclerview.setHasFixedSize(true)
 
     val dividerItemDecoration = DividerItemDecoration(contexto , DividerItemDecoration.VERTICAL)
     recyclerview.addItemDecoration(dividerItemDecoration)
-    val callback = DragManageAdapterCard(CardAdapter(card), contexto, ItemTouchHelper.UP.or(ItemTouchHelper.DOWN), 0)
+    val callback = DragManageAdapterCard(CardAdapter(card, contexto), contexto, ItemTouchHelper.UP.or(ItemTouchHelper.DOWN), 0)
     val helper = ItemTouchHelper(callback)
     helper.attachToRecyclerView(recyclerview)
 }

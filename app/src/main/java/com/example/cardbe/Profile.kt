@@ -149,7 +149,22 @@ class Profile : AppCompatActivity() {
     }
 
     fun updateDataUser(firstName: String, lastName: String, email: String, nickname: String){
+        val post = UserModel(userId, firstName, lastName, email, nickname, password, "", "true")
+        val callback = NetworkUtils.request().putUser(userId, post)
 
+        callback.enqueue(object : Callback<UserModel> {
+            override fun onFailure(call: Call<UserModel>, t: Throwable) {
+                Log.d("updateDataUserFailuere", t.message.toString())
+            }
+
+            override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
+                if (!response.isSuccessful){
+                    Log.d("updateDataUserCode", "Code: " + response.code())
+                    return
+                }
+                finish()
+            }
+        })
     }
 
     private fun pickImageFromGallery() {
@@ -163,7 +178,7 @@ class Profile : AppCompatActivity() {
         //image pick code
         private val IMAGE_PICK_CODE = 1000;
         //Permission code
-        private val PERMISSION_CODE = 1001;
+        val PERMISSION_CODE = 1001;
     }
 
     //handle requested permission result
